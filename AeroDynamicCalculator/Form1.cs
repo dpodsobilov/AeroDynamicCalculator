@@ -12,8 +12,7 @@ namespace AeroDynamicCalculator
 {
     public partial class Form1 : Form
     {
-        double r, rn, tetha, lc, l;
-        int alpha;
+        double r, rn, tetha, lc, l, alpha;
 
         public double R
         {
@@ -70,7 +69,7 @@ namespace AeroDynamicCalculator
                 l = value;
             }
         }
-        public int Alpha
+        public double Alpha
         {
             get
             {
@@ -101,10 +100,28 @@ namespace AeroDynamicCalculator
         {
             R = Convert.ToDouble(textBoxR.Text);
             Rn = Convert.ToDouble(textBoxRn.Text);
-            Tetha = Convert.ToDouble(textBoxTetha.Text);
+            Tetha = Convert.ToDouble(textBoxTetha.Text) * Math.PI / 180;
             Lc = Convert.ToDouble(textBoxLc.Text);
             L = Convert.ToDouble(textBoxL.Text);
-            Alpha = trackBar.Value;
+            Alpha = trackBar.Value * Math.PI / 180;
+
+            //
+            // counting aerodynamic params for a spherecial segment
+            //
+            double cynS, cxS, beta, gamma, a;
+            double eps = 0.0000000000001;
+            
+            if (Alpha >= eps && Alpha <= Tetha)
+            {
+                cynS = 0.5 * Math.Pow(Math.Cos(Tetha), 4) * Math.Sin(2 * Alpha);
+                cxS = 2 * Math.Pow(Math.Cos(Tetha), 2) * (1 - 0.5 * Math.Pow(Math.Cos(Tetha), 2) -
+                     (1 - 0.75 * Math.Pow(Math.Cos(Tetha), 2)) * Math.Pow(Math.Sin(Alpha), 2));
+            }
+            else 
+            {
+
+            }
         }
+
     }
 }

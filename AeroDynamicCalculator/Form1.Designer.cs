@@ -48,11 +48,11 @@
             this.labelalpha = new System.Windows.Forms.Label();
             this.trackBar = new System.Windows.Forms.TrackBar();
             this.alphaValue = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartCy = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonGraph = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCy)).BeginInit();
             this.SuspendLayout();
             // 
             // labelModel
@@ -219,21 +219,21 @@
             this.alphaValue.TabIndex = 15;
             this.alphaValue.Text = "0°";
             // 
-            // chart1
+            // chartCy
             // 
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(32, 415);
-            this.chart1.Name = "chart1";
+            this.chartCy.ChartAreas.Add(chartArea1);
+            this.chartCy.Location = new System.Drawing.Point(32, 415);
+            this.chartCy.Name = "chartCy";
             series1.ChartArea = "ChartArea1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(766, 300);
-            this.chart1.TabIndex = 16;
-            this.chart1.Text = "chart1";
+            this.chartCy.Series.Add(series1);
+            this.chartCy.Size = new System.Drawing.Size(766, 300);
+            this.chartCy.TabIndex = 16;
+            this.chartCy.Text = "chart1";
             title1.Name = "TitleCy";
             title1.Text = "Зависимость Cy от угла атаки alpha";
-            this.chart1.Titles.Add(title1);
+            this.chartCy.Titles.Add(title1);
             // 
             // buttonGraph
             // 
@@ -252,7 +252,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 758);
             this.Controls.Add(this.buttonGraph);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chartCy);
             this.Controls.Add(this.alphaValue);
             this.Controls.Add(this.trackBar);
             this.Controls.Add(this.labelalpha);
@@ -275,7 +275,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,7 +299,7 @@
         private System.Windows.Forms.Label labelalpha;
         private System.Windows.Forms.TrackBar trackBar;
         private System.Windows.Forms.Label alphaValue;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartCy;
         private System.Windows.Forms.Button buttonGraph;
     }
 }
