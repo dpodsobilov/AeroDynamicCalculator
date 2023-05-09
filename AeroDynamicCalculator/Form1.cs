@@ -16,5 +16,15 @@ namespace AeroDynamicCalculator
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            alphaValue.Text = trackBar.Value.ToString() + "°";
+        }
     }
 }
