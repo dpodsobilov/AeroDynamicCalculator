@@ -12,6 +12,7 @@ namespace AeroDynamicCalculator
 {
     public partial class Form1 : Form
     {
+        const double PI = Math.PI;
         double r, rn, tetha, lc, l, alpha;
 
         public double R
@@ -111,15 +112,29 @@ namespace AeroDynamicCalculator
             double cynS, cxS, beta, gamma, a;
             double eps = 0.0000000000001;
             
+            // 0 <= Alpha <= Tetha
             if (Alpha >= eps && Alpha <= Tetha)
             {
                 cynS = 0.5 * Math.Pow(Math.Cos(Tetha), 4) * Math.Sin(2 * Alpha);
-                cxS = 2 * Math.Pow(Math.Cos(Tetha), 2) * (1 - 0.5 * Math.Pow(Math.Cos(Tetha), 2) -
-                     (1 - 0.75 * Math.Pow(Math.Cos(Tetha), 2)) * Math.Pow(Math.Sin(Alpha), 2));
+                cxS = 2 * Math.Pow(Math.Cos(Tetha), 2) * (1 - 0.5 * Math.Pow(Math.Cos(Tetha), 2)
+                   - (1 - 0.75 * Math.Pow(Math.Cos(Tetha), 2)) * Math.Pow(Math.Sin(Alpha), 2));
             }
-            else 
+            // Tetha < Alpha <= PI/2
+            else
             {
+                beta = Math.Asin(Math.Tan(Tetha) / Math.Tan(Alpha));
+                gamma = Math.Acos(Math.Sin(Tetha) / Math.Sin(Alpha));
+                a = Math.Sqrt(Math.Pow(Math.Sin(Alpha), 2) - Math.Pow(Math.Sin(Tetha), 2));
 
+                cynS = 0.25 * Math.Pow(Math.Cos(Tetha), 4) * Math.Sin(2 * Alpha) * (1 + 2 * beta / PI)
+                    + gamma * Math.Sin(Alpha) / PI + (1 / (3 * PI)) * Math.Sin(Alpha) * Math.Sin(Tetha)
+                    * (Math.Pow(Math.Sin(Tetha), 2) * (3 - Math.Pow(Math.Sin(Alpha), -2))) * a;
+
+                cxS = (1 + 2 * beta / PI) * (1 - 0.5 * Math.Pow(Math.Cos(Tetha), 2)
+                   - (1 - 0.75 * Math.Pow(Math.Cos(Tetha), 2)) * Math.Pow(Math.Sin(Alpha), 2))
+                   * Math.Pow(Math.Cos(Tetha), 2) + gamma * Math.Cos(Alpha) / PI
+                   + (Math.Cos(Alpha) / (2 * PI)) * Math.Sin(Tetha) 
+                   * (1 - 3 * Math.Pow(Math.Sin(Tetha), 2)) * a;
             }
         }
 
