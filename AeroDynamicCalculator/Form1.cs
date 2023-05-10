@@ -160,10 +160,18 @@ namespace AeroDynamicCalculator
                     * (1 + 2 * beta / PI + (2 / (3 * PI)) 
                     * Math.Sqrt(1 - Math.Pow(tangens, 2)) * (2 * tangens + Math.Pow(tangens, -1)));
                 cxC = 0.5 * (1 + 2 * beta / PI)
-                    * 2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2))
-                    * Math.Pow(Math.Sin(Alpha), 2) + (0.75 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
+                    * (2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2))
+                    * Math.Pow(Math.Sin(Alpha), 2)) + (0.75 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
                     * Math.Sin(2 * Alpha) * Math.Sin(2 * Tetha);
             }
+
+            //
+            // counting cone with sperical segnent
+            //
+
+            double rn = Rn / R;
+            double cyn = cynS * Math.Pow(rn, 2) + cynC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
+
         }
 
     }
