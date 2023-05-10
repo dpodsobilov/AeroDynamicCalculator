@@ -111,7 +111,9 @@ namespace AeroDynamicCalculator
             //
             double cynS, cxS, beta, gamma, a;
             double eps = 0.0000000000001;
-            
+
+            beta = Math.Asin(Math.Tan(Tetha) / Math.Tan(Alpha));
+
             // 0 <= Alpha <= Tetha
             if (Alpha >= eps && Alpha <= Tetha)
             {
@@ -122,7 +124,6 @@ namespace AeroDynamicCalculator
             // Tetha < Alpha <= PI/2
             else
             {
-                beta = Math.Asin(Math.Tan(Tetha) / Math.Tan(Alpha));
                 gamma = Math.Acos(Math.Sin(Tetha) / Math.Sin(Alpha));
                 a = Math.Sqrt(Math.Pow(Math.Sin(Alpha), 2) - Math.Pow(Math.Sin(Tetha), 2));
 
@@ -135,6 +136,33 @@ namespace AeroDynamicCalculator
                    * Math.Pow(Math.Cos(Tetha), 2) + gamma * Math.Cos(Alpha) / PI
                    + (Math.Cos(Alpha) / (2 * PI)) * Math.Sin(Tetha) 
                    * (1 - 3 * Math.Pow(Math.Sin(Tetha), 2)) * a;
+            }
+
+
+            //
+            // counting aerodynamic params for a truncated cone
+            //
+
+            double cynC, cxC;
+
+            // 0 <= Alpha <= Tetha
+            if (Alpha >= eps && Alpha <= Tetha)
+            {
+                cynC = 0.5 * Math.Pow(Math.Cos(Tetha), 2) * Math.Sin(2 * Alpha);
+                cxC = 2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2)) 
+                    * Math.Pow(Math.Sin(Alpha), 2);
+            }
+            // Tetha < Alpha <= PI/2
+            else
+            {
+                double tangens = Math.Tan(Tetha) / Math.Tan(Alpha);
+                cynC = 0.5 * Math.Pow(Math.Cos(Tetha), 2) * Math.Sin(2 * Alpha)
+                    * (1 + 2 * beta / PI + (2 / (3 * PI)) 
+                    * Math.Sqrt(1 - Math.Pow(tangens, 2)) * (2 * tangens + Math.Pow(tangens, -1)));
+                cxC = 0.5 * (1 + 2 * beta / PI)
+                    * 2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2))
+                    * Math.Pow(Math.Sin(Alpha), 2) + (0.75 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
+                    * Math.Sin(2 * Alpha) * Math.Sin(2 * Tetha);
             }
         }
 
