@@ -171,6 +171,8 @@ namespace AeroDynamicCalculator
 
             double rn = Rn / R;
             double cyn = cynS * Math.Pow(rn, 2) + cynC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
+            double cx = -cxS * Math.Pow(rn, 2) - cxC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
+
 
         }
 
