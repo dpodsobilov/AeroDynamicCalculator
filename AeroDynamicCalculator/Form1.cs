@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AeroDynamicCalculator
 {
@@ -14,6 +15,7 @@ namespace AeroDynamicCalculator
     {
         const double PI = Math.PI;
         double r, rn, tetha, lc, l, alpha;
+        double cyn, cx, mzn;
 
         public double R
         {
@@ -70,6 +72,7 @@ namespace AeroDynamicCalculator
                 l = value;
             }
         }
+
         public double Alpha
         {
             get
@@ -89,7 +92,39 @@ namespace AeroDynamicCalculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // configuration for Charts
+            // example: chartName.ChartAreas[0].AxisY.Maximum = 100;
 
+
+            // chart Cx
+
+            chartCx.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
+            chartCx.Series[0].XValueType = ChartValueType.DateTime;
+            chartCx.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate();
+            chartCx.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.2).ToOADate();
+
+            chartCx.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
+            chartCx.ChartAreas[0].AxisX.Interval = 5;
+
+
+            // chart Cy
+            chartCy.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
+            chartCy.Series[0].XValueType = ChartValueType.DateTime;
+            chartCy.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate();
+            chartCy.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.2).ToOADate();
+
+            chartCy.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
+            chartCy.ChartAreas[0].AxisX.Interval = 5;
+
+            // chart Mzn
+
+            chartM.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
+            chartM.Series[0].XValueType = ChartValueType.DateTime;
+            chartM.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate();
+            chartM.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.2).ToOADate();
+
+            chartM.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
+            chartM.ChartAreas[0].AxisX.Interval = 5;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -106,6 +141,13 @@ namespace AeroDynamicCalculator
             L = Convert.ToDouble(textBoxL.Text);
             Alpha = trackBar.Value * Math.PI / 180;
 
+            timer.Enabled = true;
+
+           
+        }
+
+        private void calculateValues()
+        {
             //
             // counting aerodynamic params for a spherecial segment
             //
@@ -134,7 +176,7 @@ namespace AeroDynamicCalculator
                 cxS = (1 + 2 * beta / PI) * (1 - 0.5 * Math.Pow(Math.Cos(Tetha), 2)
                    - (1 - 0.75 * Math.Pow(Math.Cos(Tetha), 2)) * Math.Pow(Math.Sin(Alpha), 2))
                    * Math.Pow(Math.Cos(Tetha), 2) + gamma * Math.Cos(Alpha) / PI
-                   + (Math.Cos(Alpha) / (2 * PI)) * Math.Sin(Tetha) 
+                   + (Math.Cos(Alpha) / (2 * PI)) * Math.Sin(Tetha)
                    * (1 - 3 * Math.Pow(Math.Sin(Tetha), 2)) * a;
             }
 
@@ -149,7 +191,7 @@ namespace AeroDynamicCalculator
             if (Alpha >= eps && Alpha <= Tetha)
             {
                 cynC = 0.5 * Math.Pow(Math.Cos(Tetha), 2) * Math.Sin(2 * Alpha);
-                cxC = 2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2)) 
+                cxC = 2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2))
                     * Math.Pow(Math.Sin(Alpha), 2);
             }
             // Tetha < Alpha <= PI/2
@@ -157,7 +199,7 @@ namespace AeroDynamicCalculator
             {
                 double tangens = Math.Tan(Tetha) / Math.Tan(Alpha);
                 cynC = 0.5 * Math.Pow(Math.Cos(Tetha), 2) * Math.Sin(2 * Alpha)
-                    * (1 + 2 * beta / PI + (2 / (3 * PI)) 
+                    * (1 + 2 * beta / PI + (2 / (3 * PI))
                     * Math.Sqrt(1 - Math.Pow(tangens, 2)) * (2 * tangens + Math.Pow(tangens, -1)));
                 cxC = 0.5 * (1 + 2 * beta / PI)
                     * (2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2))
@@ -170,8 +212,8 @@ namespace AeroDynamicCalculator
             //
 
             double rn = Rn / R;
-            double cyn = cynS * Math.Pow(rn, 2) + cynC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
-            double cx = -cxS * Math.Pow(rn, 2) - cxC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
+            cyn = cynS * Math.Pow(rn, 2) + cynC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
+            cx = -cxS * Math.Pow(rn, 2) - cxC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
 
             double L0 = L / R * Math.Tan(Tetha);
             // capsule length
@@ -184,17 +226,34 @@ namespace AeroDynamicCalculator
             double xd = 2 / (3 * Math.Pow(Math.Cos(Tetha), 2)) *
                 ((1 + RL + RL * RL) / (1 - RL * RL)) - RL / (1 - RL);
 
-            double mzn = -cynS * Math.Tan(Tetha) / L0 * Math.Pow(rn, 3)
+            mzn = -cynS * Math.Tan(Tetha) / L0 * Math.Pow(rn, 3)
                 - cynC / L0 * (1 - Math.Pow(rn * Math.Cos(Tetha), 2))
                 * (xd * Lc / L + (1 - Lc / L));
 
             // !!!!! I have question!!!! 
             double xC = -1;
             //
-            
+
             double mzc = mzn - cyn * xC;
             double xD = mzn / cyn;
         }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (Alpha > 0)
+            {
+                Alpha = Alpha - 1 * PI / 180;
+            }
+            labelAlphaNow.Text = Alpha.ToString();
+
+            calculateValues();
+
+            labelCxValue.Text = cx.ToString();
+
+            DateTime timeNow = DateTime.Now;
+            chartCx.Series[0].Points.AddXY(timeNow, cx);
+            chartCy.Series[0].Points.AddXY(timeNow, cyn);
+            chartM.Series[0].Points.AddXY(timeNow, mzn);
+        }
     }
 }
