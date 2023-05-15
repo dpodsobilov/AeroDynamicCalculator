@@ -48,10 +48,6 @@
             this.labelRn = new System.Windows.Forms.Label();
             this.textBoxTetha = new System.Windows.Forms.TextBox();
             this.labelTetha = new System.Windows.Forms.Label();
-            this.textBoxLc = new System.Windows.Forms.TextBox();
-            this.labelLc = new System.Windows.Forms.Label();
-            this.textBoxL = new System.Windows.Forms.TextBox();
-            this.labelL = new System.Windows.Forms.Label();
             this.labelalpha = new System.Windows.Forms.Label();
             this.trackBar = new System.Windows.Forms.TrackBar();
             this.alphaValue = new System.Windows.Forms.Label();
@@ -131,7 +127,7 @@
             // textBoxRn
             // 
             this.textBoxRn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxRn.Location = new System.Drawing.Point(365, 93);
+            this.textBoxRn.Location = new System.Drawing.Point(365, 101);
             this.textBoxRn.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRn.Name = "textBoxRn";
             this.textBoxRn.Size = new System.Drawing.Size(182, 26);
@@ -143,7 +139,7 @@
             this.labelRn.AutoSize = true;
             this.labelRn.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelRn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelRn.Location = new System.Drawing.Point(325, 96);
+            this.labelRn.Location = new System.Drawing.Point(325, 104);
             this.labelRn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRn.Name = "labelRn";
             this.labelRn.Size = new System.Drawing.Size(40, 20);
@@ -153,7 +149,7 @@
             // textBoxTetha
             // 
             this.textBoxTetha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxTetha.Location = new System.Drawing.Point(365, 116);
+            this.textBoxTetha.Location = new System.Drawing.Point(365, 131);
             this.textBoxTetha.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTetha.Name = "textBoxTetha";
             this.textBoxTetha.Size = new System.Drawing.Size(182, 26);
@@ -165,63 +161,19 @@
             this.labelTetha.AutoSize = true;
             this.labelTetha.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelTetha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTetha.Location = new System.Drawing.Point(325, 119);
+            this.labelTetha.Location = new System.Drawing.Point(325, 134);
             this.labelTetha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTetha.Name = "labelTetha";
             this.labelTetha.Size = new System.Drawing.Size(35, 20);
             this.labelTetha.TabIndex = 7;
             this.labelTetha.Text = "θ = ";
             // 
-            // textBoxLc
-            // 
-            this.textBoxLc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxLc.Location = new System.Drawing.Point(365, 139);
-            this.textBoxLc.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxLc.Name = "textBoxLc";
-            this.textBoxLc.Size = new System.Drawing.Size(182, 26);
-            this.textBoxLc.TabIndex = 10;
-            this.textBoxLc.Text = "0,3";
-            // 
-            // labelLc
-            // 
-            this.labelLc.AutoSize = true;
-            this.labelLc.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelLc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLc.Location = new System.Drawing.Point(325, 141);
-            this.labelLc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelLc.Name = "labelLc";
-            this.labelLc.Size = new System.Drawing.Size(43, 20);
-            this.labelLc.TabIndex = 9;
-            this.labelLc.Text = "Lc = ";
-            // 
-            // textBoxL
-            // 
-            this.textBoxL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxL.Location = new System.Drawing.Point(365, 162);
-            this.textBoxL.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxL.Name = "textBoxL";
-            this.textBoxL.Size = new System.Drawing.Size(182, 26);
-            this.textBoxL.TabIndex = 12;
-            this.textBoxL.Text = "0,35";
-            // 
-            // labelL
-            // 
-            this.labelL.AutoSize = true;
-            this.labelL.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelL.Location = new System.Drawing.Point(325, 164);
-            this.labelL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelL.Name = "labelL";
-            this.labelL.Size = new System.Drawing.Size(35, 20);
-            this.labelL.TabIndex = 11;
-            this.labelL.Text = "L = ";
-            // 
             // labelalpha
             // 
             this.labelalpha.AutoSize = true;
             this.labelalpha.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelalpha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelalpha.Location = new System.Drawing.Point(304, 206);
+            this.labelalpha.Location = new System.Drawing.Point(320, 191);
             this.labelalpha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelalpha.Name = "labelalpha";
             this.labelalpha.Size = new System.Drawing.Size(65, 20);
@@ -230,7 +182,7 @@
             // 
             // trackBar
             // 
-            this.trackBar.Location = new System.Drawing.Point(365, 206);
+            this.trackBar.Location = new System.Drawing.Point(381, 191);
             this.trackBar.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar.Maximum = 90;
             this.trackBar.Name = "trackBar";
@@ -244,7 +196,7 @@
             this.alphaValue.AutoSize = true;
             this.alphaValue.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.alphaValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.alphaValue.Location = new System.Drawing.Point(536, 206);
+            this.alphaValue.Location = new System.Drawing.Point(552, 191);
             this.alphaValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.alphaValue.Name = "alphaValue";
             this.alphaValue.Size = new System.Drawing.Size(23, 20);
@@ -377,10 +329,6 @@
             this.Controls.Add(this.alphaValue);
             this.Controls.Add(this.trackBar);
             this.Controls.Add(this.labelalpha);
-            this.Controls.Add(this.textBoxL);
-            this.Controls.Add(this.labelL);
-            this.Controls.Add(this.textBoxLc);
-            this.Controls.Add(this.labelLc);
             this.Controls.Add(this.textBoxTetha);
             this.Controls.Add(this.labelTetha);
             this.Controls.Add(this.textBoxRn);
@@ -416,10 +364,6 @@
         private System.Windows.Forms.Label labelRn;
         private System.Windows.Forms.TextBox textBoxTetha;
         private System.Windows.Forms.Label labelTetha;
-        private System.Windows.Forms.TextBox textBoxLc;
-        private System.Windows.Forms.Label labelLc;
-        private System.Windows.Forms.TextBox textBoxL;
-        private System.Windows.Forms.Label labelL;
         private System.Windows.Forms.Label labelalpha;
         private System.Windows.Forms.TrackBar trackBar;
         private System.Windows.Forms.Label alphaValue;

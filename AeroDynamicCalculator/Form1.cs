@@ -14,7 +14,7 @@ namespace AeroDynamicCalculator
     public partial class Form1 : Form
     {
         const double PI = Math.PI;
-        double r, rn, tetha, lc, l, alpha;
+        double r, rn, tetha, alpha;
         double cyn, cx, mzn;
 
         public double R
@@ -48,28 +48,6 @@ namespace AeroDynamicCalculator
             set
             {
                 tetha = value;
-            }
-        }
-        public double Lc
-        {
-            get
-            {
-                return lc;
-            }
-            set
-            {
-                lc = value;
-            }
-        }
-        public double L
-        {
-            get
-            {
-                return l;
-            }
-            set
-            {
-                l = value;
             }
         }
 
@@ -138,8 +116,6 @@ namespace AeroDynamicCalculator
             R = Convert.ToDouble(textBoxR.Text);
             Rn = Convert.ToDouble(textBoxRn.Text);
             Tetha = Convert.ToDouble(textBoxTetha.Text) * Math.PI / 180;
-            Lc = Convert.ToDouble(textBoxLc.Text);
-            L = Convert.ToDouble(textBoxL.Text);
             Alpha = trackBar.Value * Math.PI / 180;
 
             timer.Enabled = true;
@@ -218,12 +194,14 @@ namespace AeroDynamicCalculator
             cyn = cynS * Math.Pow(rn, 2) + cynC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
             cx = -cxS * Math.Pow(rn, 2) - cxC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
 
-            double L0 = L / R * Math.Tan(Tetha);
+            
             // capsule length
-            L = R / Math.Tan(Tetha) + Rn - Rn / Math.Sin(Tetha);
+            double L = R / Math.Tan(Tetha) + Rn - Rn / Math.Sin(Tetha);
             // truncated cone length
-            Lc = (R - Rn * Math.Cos(Tetha)) * (1.0 / Math.Tan(Tetha));
-
+            double Lc = (R - Rn * Math.Cos(Tetha)) * (1.0 / Math.Tan(Tetha));
+            
+            double L0 = L / R * Math.Tan(Tetha);
+            
             double RL = Rn / R * Math.Cos(Tetha);
             // value interpretates the center of truncated cone
             double xd = 2 / (3 * Math.Pow(Math.Cos(Tetha), 2)) *
@@ -243,6 +221,7 @@ namespace AeroDynamicCalculator
 
         private void timer_Tick(object sender, EventArgs e)
         {
+
             if (Alpha > 0)
             {
                 Alpha = Alpha - 1 * PI / 180;
