@@ -101,30 +101,31 @@ namespace AeroDynamicCalculator
             chartCx.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
             chartCx.Series[0].XValueType = ChartValueType.DateTime;
             chartCx.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate();
-            chartCx.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.2).ToOADate();
+            chartCx.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.1).ToOADate();
 
-            chartCx.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
-            chartCx.ChartAreas[0].AxisX.Interval = 5;
+
+            chartCx.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Milliseconds;
+            chartCx.ChartAreas[0].AxisX.Interval = 500;
 
 
             // chart Cy
             chartCy.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
             chartCy.Series[0].XValueType = ChartValueType.DateTime;
             chartCy.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate();
-            chartCy.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.2).ToOADate();
+            chartCy.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.1).ToOADate();
 
-            chartCy.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
-            chartCy.ChartAreas[0].AxisX.Interval = 5;
+            chartCy.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Milliseconds;
+            chartCy.ChartAreas[0].AxisX.Interval = 500;
 
             // chart Mzn
 
             chartM.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
             chartM.Series[0].XValueType = ChartValueType.DateTime;
             chartM.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate();
-            chartM.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.2).ToOADate();
+            chartM.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(0.1).ToOADate();
 
-            chartM.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
-            chartM.ChartAreas[0].AxisX.Interval = 5;
+            chartM.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Milliseconds;
+            chartM.ChartAreas[0].AxisX.Interval = 500;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -143,7 +144,9 @@ namespace AeroDynamicCalculator
 
             timer.Enabled = true;
 
-           
+            chartCx.Series[0].Points.Clear();
+            chartCy.Series[0].Points.Clear();
+            chartM.Series[0].Points.Clear();
         }
 
         private void calculateValues()
@@ -249,6 +252,8 @@ namespace AeroDynamicCalculator
             calculateValues();
 
             labelCxValue.Text = cx.ToString();
+            labelCyValue.Text = cx.ToString();
+            labelMValue.Text = cx.ToString();
 
             DateTime timeNow = DateTime.Now;
             chartCx.Series[0].Points.AddXY(timeNow, cx);
