@@ -173,7 +173,27 @@ namespace AeroDynamicCalculator
             double cyn = cynS * Math.Pow(rn, 2) + cynC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
             double cx = -cxS * Math.Pow(rn, 2) - cxC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
 
+            double L0 = L / R * Math.Tan(Tetha);
+            // capsule length
+            L = R / Math.Tan(Tetha) + Rn - Rn / Math.Sin(Tetha);
+            // truncated cone length
+            Lc = (R - Rn * Math.Cos(Tetha)) * (1.0 / Math.Tan(Tetha));
 
+            double RL = Rn / R * Math.Cos(Tetha);
+            // value interpretates the center of truncated cone
+            double xd = 2 / (3 * Math.Pow(Math.Cos(Tetha), 2)) *
+                ((1 + RL + RL * RL) / (1 - RL * RL)) - RL / (1 - RL);
+
+            double mzn = -cynS * Math.Tan(Tetha) / L0 * Math.Pow(rn, 3)
+                - cynC / L0 * (1 - Math.Pow(rn * Math.Cos(Tetha), 2))
+                * (xd * Lc / L + (1 - Lc / L));
+
+            // !!!!! I have question!!!! 
+            double xC = -1;
+            //
+            
+            double mzc = mzn - cyn * xC;
+            double xD = mzn / cyn;
         }
 
     }
