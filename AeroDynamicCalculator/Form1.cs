@@ -78,23 +78,33 @@ namespace AeroDynamicCalculator
 
             // chart Cx
             chartCx.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartCx.ChartAreas[0].AxisX.Title = "alpha";
+            chartCx.ChartAreas[0].AxisY.Title = "Cx";
             chartCx.Series[0].XValueType = ChartValueType.Double;
-
+            
 
             // chart Cy
             chartCy.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartCy.ChartAreas[0].AxisX.Title = "alpha";
+            chartCy.ChartAreas[0].AxisY.Title = "Cy";
             chartCy.Series[0].XValueType = ChartValueType.Double;
 
             // chart Mzn
             chartM.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartM.ChartAreas[0].AxisX.Title = "alpha";
+            chartM.ChartAreas[0].AxisY.Title = "Mzn";
             chartM.Series[0].XValueType = ChartValueType.Double;
 
             // chart Mzc
             chartMzc.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartMzc.ChartAreas[0].AxisX.Title = "alpha";
+            chartMzc.ChartAreas[0].AxisY.Title = "Mzc";
             chartMzc.Series[0].XValueType = ChartValueType.Double;
 
             // chart xD
             chartXD.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartXD.ChartAreas[0].AxisX.Title = "alpha";
+            chartXD.ChartAreas[0].AxisY.Title = "xD";
             chartXD.Series[0].XValueType = ChartValueType.Double;
 
             restartCharts();
@@ -165,7 +175,7 @@ namespace AeroDynamicCalculator
             StreamWriter sw = new StreamWriter("C:\\Users\\Denis\\Desktop\\directory\\Test.txt");
             
 
-            for (double i = 1; i <= 180; i++)
+            for (double i = 0; i <= 180; i++)
             {
                 Alpha = i * PI / 180;
 

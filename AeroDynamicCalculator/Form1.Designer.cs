@@ -57,9 +57,6 @@
             this.buttonGraph = new System.Windows.Forms.Button();
             this.chartM = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartCx = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.labelCxValue = new System.Windows.Forms.Label();
-            this.labelCyValue = new System.Windows.Forms.Label();
-            this.labelMValue = new System.Windows.Forms.Label();
             this.chartMzc = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartXD = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -235,36 +232,6 @@
             title3.Text = "Зависимость Cx от угла атаки alpha";
             this.chartCx.Titles.Add(title3);
             // 
-            // labelCxValue
-            // 
-            this.labelCxValue.AutoSize = true;
-            this.labelCxValue.Location = new System.Drawing.Point(940, 722);
-            this.labelCxValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelCxValue.Name = "labelCxValue";
-            this.labelCxValue.Size = new System.Drawing.Size(22, 16);
-            this.labelCxValue.TabIndex = 21;
-            this.labelCxValue.Text = "Cx";
-            // 
-            // labelCyValue
-            // 
-            this.labelCyValue.AutoSize = true;
-            this.labelCyValue.Location = new System.Drawing.Point(63, 767);
-            this.labelCyValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelCyValue.Name = "labelCyValue";
-            this.labelCyValue.Size = new System.Drawing.Size(23, 16);
-            this.labelCyValue.TabIndex = 22;
-            this.labelCyValue.Text = "Cy";
-            // 
-            // labelMValue
-            // 
-            this.labelMValue.AutoSize = true;
-            this.labelMValue.Location = new System.Drawing.Point(940, 377);
-            this.labelMValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelMValue.Name = "labelMValue";
-            this.labelMValue.Size = new System.Drawing.Size(18, 16);
-            this.labelMValue.TabIndex = 23;
-            this.labelMValue.Text = "M";
-            // 
             // chartMzc
             // 
             chartArea4.Name = "ChartArea1";
@@ -311,9 +278,6 @@
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.chartXD);
             this.Controls.Add(this.chartMzc);
-            this.Controls.Add(this.labelMValue);
-            this.Controls.Add(this.labelCyValue);
-            this.Controls.Add(this.labelCxValue);
             this.Controls.Add(this.chartCx);
             this.Controls.Add(this.chartM);
             this.Controls.Add(this.buttonGraph);
@@ -359,9 +323,6 @@
         private System.Windows.Forms.Button buttonGraph;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartM;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCx;
-        private System.Windows.Forms.Label labelCxValue;
-        private System.Windows.Forms.Label labelCyValue;
-        private System.Windows.Forms.Label labelMValue;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartMzc;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartXD;
     }
