@@ -112,18 +112,30 @@ namespace AeroDynamicCalculator
 
         private void buttonGraph_Click(object sender, EventArgs e)
         {
-            R = Convert.ToDouble(textBoxR.Text);
-            Rn = Convert.ToDouble(textBoxRn.Text);
-            Tetha = Convert.ToDouble(textBoxTetha.Text) * PI / 180;
+            double checkR, checkRn, checkTetha;
+            if (!double.TryParse(textBoxR.Text, out checkR) || !double.TryParse(textBoxRn.Text, out checkRn) || !double.TryParse(textBoxTetha.Text, out checkTetha))
+            {
+                MessageBox.Show("Недопустимые значения параметров. Введите действительные числа.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
 
-            chartCx.Series[0].Points.Clear();
-            chartCy.Series[0].Points.Clear();
-            chartM.Series[0].Points.Clear();
-            chartMzc.Series[0].Points.Clear();
-            chartXD.Series[0].Points.Clear();
 
-            restartCharts();
-            calculateValues();
+                R = Convert.ToDouble(textBoxR.Text);
+                Rn = Convert.ToDouble(textBoxRn.Text);
+                Tetha = Convert.ToDouble(textBoxTetha.Text) * PI / 180;
+
+
+
+                chartCx.Series[0].Points.Clear();
+                chartCy.Series[0].Points.Clear();
+                chartM.Series[0].Points.Clear();
+                chartMzc.Series[0].Points.Clear();
+                chartXD.Series[0].Points.Clear();
+
+                restartCharts();
+                calculateValues();
+            }
         }
 
         // moves graph to the beginning
@@ -172,7 +184,7 @@ namespace AeroDynamicCalculator
             double eps = 0.0000000000001;
 
             //Pass the filepath and filename to the StreamWriter Constructor
-            StreamWriter sw = new StreamWriter("C:\\Users\\Denis\\Desktop\\directory\\Test.txt");
+            //StreamWriter sw = new StreamWriter("C:\\Users\\Denis\\Desktop\\directory\\Test.txt");
             
 
             for (double i = 0; i <= 180; i++)
@@ -271,11 +283,11 @@ namespace AeroDynamicCalculator
                 chartMzc.Series[0].Points.AddXY(i, mzc);
                 chartXD.Series[0].Points.AddXY(i, xD);
 
-                sw.WriteLine($"{i}  {cx}");
+                //sw.WriteLine($"{i}  {cx}");
             }
 
             //Close the file
-            sw.Close();
+            //sw.Close();
         }
 
         
