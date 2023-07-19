@@ -140,7 +140,7 @@ namespace AeroDynamicCalculator
             {
                 return 0.25 * Math.Pow(Math.Cos(Tetha), 4) * Math.Sin(2 * Alpha) * (1 + 2 * CountBeta() / PI)
                         + CountGamma() * Math.Sin(Alpha) / PI + (1 / (3 * PI)) * Math.Sin(Alpha) * Math.Sin(Tetha)
-                        * (Math.Pow(Math.Sin(Tetha), 2) * (3 - Math.Pow(Math.Sin(Alpha), -2))) * CountA();
+                        * (Math.Pow(Math.Sin(Tetha), 2) * (3 - Math.Pow(Math.Sin(Alpha), -2)) - 5) * CountA();
             }
         }
 
