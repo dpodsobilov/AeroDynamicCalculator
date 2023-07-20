@@ -3,85 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AeroDynamicCalculator
 {
     public partial class Form1 : Form
     {
-        const double PI = Math.PI;
-        double r, rn, tetha, lc, l, alpha;
-
-        public double R
-        {
-            get
-            {
-                return r;
-            }
-            set
-            {
-                r = value;
-            }
-        }
-        public double Rn
-        {
-            get
-            {
-                return rn;
-            }
-            set
-            {
-                rn = value;
-            }
-        }
-        public double Tetha
-        {
-            get
-            {
-                return tetha;
-            }
-            set
-            {
-                tetha = value;
-            }
-        }
-        public double Lc
-        {
-            get
-            {
-                return lc;
-            }
-            set
-            {
-                lc = value;
-            }
-        }
-        public double L
-        {
-            get
-            {
-                return l;
-            }
-            set
-            {
-                l = value;
-            }
-        }
-        public double Alpha
-        {
-            get
-            {
-                return alpha;
-            }
-            set
-            {
-                alpha = value;
-            }
-        }
-
+        Formulas capsule;
+    
         public Form1()
         {
             InitializeComponent();
@@ -90,91 +24,134 @@ namespace AeroDynamicCalculator
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }
+            // configuration for Charts
+            // example: chartName.ChartAreas[0].AxisY.Maximum = 100;
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            alphaValue.Text = trackBar.Value.ToString() + "°";
+            // chart Cx
+            chartCx.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartCx.ChartAreas[0].AxisX.Title = "alpha";
+            chartCx.ChartAreas[0].AxisY.Title = "Cx";
+            chartCx.Series[0].XValueType = ChartValueType.Double;
+
+
+            // chart Cy
+            chartCy.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartCy.ChartAreas[0].AxisX.Title = "alpha";
+            chartCy.ChartAreas[0].AxisY.Title = "Cy";
+            chartCy.Series[0].XValueType = ChartValueType.Double;
+
+            // chart Mzn
+            chartM.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartM.ChartAreas[0].AxisX.Title = "alpha";
+            chartM.ChartAreas[0].AxisY.Title = "Mzn";
+            chartM.Series[0].XValueType = ChartValueType.Double;
+
+            // chart Mzc
+            chartMzc.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartMzc.ChartAreas[0].AxisX.Title = "alpha";
+            chartMzc.ChartAreas[0].AxisY.Title = "Mzc";
+            chartMzc.Series[0].XValueType = ChartValueType.Double;
+
+            // chart xD
+            chartXD.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
+            chartXD.ChartAreas[0].AxisX.Title = "alpha";
+            chartXD.ChartAreas[0].AxisY.Title = "xD";
+            chartXD.Series[0].XValueType = ChartValueType.Double;
+
+            restartCharts();
         }
 
         private void buttonGraph_Click(object sender, EventArgs e)
         {
-            R = Convert.ToDouble(textBoxR.Text);
-            Rn = Convert.ToDouble(textBoxRn.Text);
-            Tetha = Convert.ToDouble(textBoxTetha.Text) * Math.PI / 180;
-            Lc = Convert.ToDouble(textBoxLc.Text);
-            L = Convert.ToDouble(textBoxL.Text);
-            Alpha = trackBar.Value * Math.PI / 180;
+            double checkR, checkRn, checkTetha;
+            if (!double.TryParse(textBoxR.Text, out checkR) || !double.TryParse(textBoxRn.Text, out checkRn) || !double.TryParse(textBoxTetha.Text, out checkTetha))
+            {
+                MessageBox.Show("Недопустимые значения параметров. Введите действительные числа.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                capsule = new Formulas(Convert.ToDouble(textBoxR.Text), Convert.ToDouble(textBoxRn.Text), Convert.ToDouble(textBoxTetha.Text));
 
+                if (Convert.ToDouble(textBoxTetha.Text) < 0.0000000000001)
+                {
+                    textBoxTetha.Text = "45";
+                }
+
+                chartCx.Series[0].Points.Clear();
+                chartCy.Series[0].Points.Clear();
+                chartM.Series[0].Points.Clear();
+                chartMzc.Series[0].Points.Clear();
+                chartXD.Series[0].Points.Clear();
+
+                restartCharts();
+                calculateValues();
+            }
+        }
+
+        // moves graphs to the beginning
+        private void restartCharts()
+        {
+            // cx
+            chartCx.ChartAreas[0].AxisX.Minimum = 0;
+            chartCx.ChartAreas[0].AxisX.Maximum = 180;
+
+            chartCx.ChartAreas[0].AxisX.Interval = 5;
+
+
+            // cy
+            chartCy.ChartAreas[0].AxisX.Minimum = 0;
+            chartCy.ChartAreas[0].AxisX.Maximum = 180;
+
+            chartCy.ChartAreas[0].AxisX.Interval = 5;
+
+
+            // mzn
+            chartM.ChartAreas[0].AxisX.Minimum = 0;
+            chartM.ChartAreas[0].AxisX.Maximum = 180;
+
+            chartM.ChartAreas[0].AxisX.Interval = 5;
+
+            // mzc
+            chartMzc.ChartAreas[0].AxisX.Minimum = 0;
+            chartMzc.ChartAreas[0].AxisX.Maximum = 180;
+
+            chartMzc.ChartAreas[0].AxisX.Interval = 5;
+
+
+            // xd
+            chartXD.ChartAreas[0].AxisX.Minimum = 0;
+            chartXD.ChartAreas[0].AxisX.Maximum = 180;
+
+            chartXD.ChartAreas[0].AxisX.Interval = 5;
+        }
+
+        private void calculateValues()
+        {
             //
             // counting aerodynamic params for a spherecial segment
             //
-            double cynS, cxS, beta, gamma, a;
             double eps = 0.0000000000001;
 
-            beta = Math.Asin(Math.Tan(Tetha) / Math.Tan(Alpha));
+            //Pass the filepath and filename to the StreamWriter Constructor
+            //StreamWriter sw = new StreamWriter("C:\\Users\\Denis\\Desktop\\directory\\Test.txt");
 
-            // 0 <= Alpha <= Tetha
-            if (Alpha >= eps && Alpha <= Tetha)
+
+            for (double i = 0; i <= 180; i++)
             {
-                cynS = 0.5 * Math.Pow(Math.Cos(Tetha), 4) * Math.Sin(2 * Alpha);
-                cxS = 2 * Math.Pow(Math.Cos(Tetha), 2) * (1 - 0.5 * Math.Pow(Math.Cos(Tetha), 2)
-                   - (1 - 0.75 * Math.Pow(Math.Cos(Tetha), 2)) * Math.Pow(Math.Sin(Alpha), 2));
+                capsule.calculateValues(i, eps);
+
+                chartCx.Series[0].Points.AddXY(i, capsule.Cx);
+                chartCy.Series[0].Points.AddXY(i, capsule.Cyn);
+                chartM.Series[0].Points.AddXY(i, capsule.Mzn);
+                chartMzc.Series[0].Points.AddXY(i, capsule.Mzc);
+                chartXD.Series[0].Points.AddXY(i, capsule.XD);
+
+                //sw.WriteLine($"{i}  {cx}");
             }
-            // Tetha < Alpha <= PI/2
-            else
-            {
-                gamma = Math.Acos(Math.Sin(Tetha) / Math.Sin(Alpha));
-                a = Math.Sqrt(Math.Pow(Math.Sin(Alpha), 2) - Math.Pow(Math.Sin(Tetha), 2));
-
-                cynS = 0.25 * Math.Pow(Math.Cos(Tetha), 4) * Math.Sin(2 * Alpha) * (1 + 2 * beta / PI)
-                    + gamma * Math.Sin(Alpha) / PI + (1 / (3 * PI)) * Math.Sin(Alpha) * Math.Sin(Tetha)
-                    * (Math.Pow(Math.Sin(Tetha), 2) * (3 - Math.Pow(Math.Sin(Alpha), -2))) * a;
-
-                cxS = (1 + 2 * beta / PI) * (1 - 0.5 * Math.Pow(Math.Cos(Tetha), 2)
-                   - (1 - 0.75 * Math.Pow(Math.Cos(Tetha), 2)) * Math.Pow(Math.Sin(Alpha), 2))
-                   * Math.Pow(Math.Cos(Tetha), 2) + gamma * Math.Cos(Alpha) / PI
-                   + (Math.Cos(Alpha) / (2 * PI)) * Math.Sin(Tetha) 
-                   * (1 - 3 * Math.Pow(Math.Sin(Tetha), 2)) * a;
-            }
-
-
-            //
-            // counting aerodynamic params for a truncated cone
-            //
-
-            double cynC, cxC;
-
-            // 0 <= Alpha <= Tetha
-            if (Alpha >= eps && Alpha <= Tetha)
-            {
-                cynC = 0.5 * Math.Pow(Math.Cos(Tetha), 2) * Math.Sin(2 * Alpha);
-                cxC = 2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2)) 
-                    * Math.Pow(Math.Sin(Alpha), 2);
-            }
-            // Tetha < Alpha <= PI/2
-            else
-            {
-                double tangens = Math.Tan(Tetha) / Math.Tan(Alpha);
-                cynC = 0.5 * Math.Pow(Math.Cos(Tetha), 2) * Math.Sin(2 * Alpha)
-                    * (1 + 2 * beta / PI + (2 / (3 * PI)) 
-                    * Math.Sqrt(1 - Math.Pow(tangens, 2)) * (2 * tangens + Math.Pow(tangens, -1)));
-                cxC = 0.5 * (1 + 2 * beta / PI)
-                    * (2 * Math.Pow(Math.Sin(Tetha), 2) + (1 - 3 * Math.Pow(Math.Sin(Tetha), 2))
-                    * Math.Pow(Math.Sin(Alpha), 2)) + (0.75 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
-                    * Math.Sin(2 * Alpha) * Math.Sin(2 * Tetha);
-            }
-
-            //
-            // counting cone with sperical segnent
-            //
-
-            double rn = Rn / R;
-            double cyn = cynS * Math.Pow(rn, 2) + cynC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
-            double cx = -cxS * Math.Pow(rn, 2) - cxC * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
-
-
         }
 
+        //Close the file
+        //sw.Close();
     }
+
 }
