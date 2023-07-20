@@ -176,7 +176,7 @@ namespace AeroDynamicCalculator
                 double tangens = Math.Tan(Tetha) / Math.Tan(Alpha);
                 return 0.5 * Math.Pow(Math.Cos(Tetha), 2) * Math.Sin(2 * Alpha)
                         * (1 + 2 * CountBeta() / PI + (2 / (3 * PI)) * Math.Sqrt(1 - Math.Pow(tangens, 2)) 
-                        * (2 * tangens + Math.Pow(tangens, -1)));
+                        * (2 * Math.Pow(tangens, -1) + tangens));
             }
         }
 

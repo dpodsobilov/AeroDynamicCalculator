@@ -137,7 +137,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        // moves graph to the beginning
+        // moves graphs to the beginning
         private void restartCharts()
         {
             // cx
