@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AeroDynamicCalculator
 {
@@ -96,7 +97,20 @@ namespace AeroDynamicCalculator
         {
             this.r = r; 
             this.rn = rn; 
-            this.tetha = tetha; 
+
+            if (tetha < 0)
+            {
+                DialogResult dialog = MessageBox.Show(
+                    "Недопустимое значение угла! Значение установлено на 45 градусов.", 
+                    "Предупреждение", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Warning);
+                this.tetha = 45 * PI / 180;
+            }
+            else
+            {
+                this.tetha = tetha * PI / 180; 
+            }
         }
 
         internal void calculateValues(double iteration, double eps)
