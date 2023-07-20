@@ -210,12 +210,12 @@ namespace AeroDynamicCalculator
 
         internal double CountCyn(double eps)
         {
-            return CountCynS(eps) * Math.Pow(rn, 2) + CountCynC(eps) * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
+            return CountCynS(eps) * Math.Pow(CountRn(), 2) + CountCynC(eps) * (1 - Math.Pow(CountRn() * Math.Cos(Tetha), 2));
         }
 
         internal double CountCx(double eps)
         {
-            return -CountCxS(eps) * Math.Pow(rn, 2) - CountCxC(eps) * (1 - Math.Pow(rn * Math.Cos(Tetha), 2));
+            return -CountCxS(eps) * Math.Pow(CountRn(), 2) - CountCxC(eps) * (1 - Math.Pow(CountRn() * Math.Cos(Tetha), 2));
         }
 
 
