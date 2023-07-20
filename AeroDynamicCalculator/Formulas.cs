@@ -252,8 +252,8 @@ namespace AeroDynamicCalculator
 
         internal double CountMzn(double eps)
         {
-            return -CountCynS(eps) * Math.Tan(Tetha) / CountL0() * Math.Pow(rn, 3)
-                    - CountCynC(eps) / CountL0() * (1 - Math.Pow(rn * Math.Cos(Tetha), 2))
+            return -CountCynS(eps) * Math.Tan(Tetha) / CountL0() * Math.Pow(CountRn(), 3)
+                    - CountCynC(eps) / CountL0() * (1 - Math.Pow(CountRn() * Math.Cos(Tetha), 2))
                     * (CountXd() * CountLc() / CountL() + (1 - CountLc() / CountL()));
         }
 
