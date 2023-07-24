@@ -24,7 +24,6 @@ namespace AeroDynamicCalculator
         private void Form1_Load(object sender, EventArgs e)
         {
             InitilizeCharts();
-            RestartCharts();
         }
 
         private void buttonGraph_Click(object sender, EventArgs e)
@@ -60,41 +59,32 @@ namespace AeroDynamicCalculator
             // example: chartName.ChartAreas[0].AxisY.Maximum = 100;
 
             // chart Cx
-            chartCx.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
             chartCx.ChartAreas[0].AxisX.Title = "alpha";
             chartCx.ChartAreas[0].AxisY.Title = "Cx";
-            chartCx.Series[0].XValueType = ChartValueType.Double;
 
 
             // chart Cy
-            chartCy.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
             chartCy.ChartAreas[0].AxisX.Title = "alpha";
             chartCy.ChartAreas[0].AxisY.Title = "Cy";
-            chartCy.Series[0].XValueType = ChartValueType.Double;
 
             // chart Mzn
-            chartM.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
             chartM.ChartAreas[0].AxisX.Title = "alpha";
             chartM.ChartAreas[0].AxisY.Title = "Mzn";
-            chartM.Series[0].XValueType = ChartValueType.Double;
 
             // chart Mzc
-            chartMzc.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
             chartMzc.ChartAreas[0].AxisX.Title = "alpha";
             chartMzc.ChartAreas[0].AxisY.Title = "Mzc";
-            chartMzc.Series[0].XValueType = ChartValueType.Double;
 
             // chart xD
-            chartXD.ChartAreas[0].AxisX.LabelStyle.Format = "n3";
             chartXD.ChartAreas[0].AxisX.Title = "alpha";
             chartXD.ChartAreas[0].AxisY.Title = "xD";
-            chartXD.Series[0].XValueType = ChartValueType.Double;
         }
 
         // moves graphs to the beginning
         private void RestartCharts()
         {
             // cx
+            chartCx.Visible = true;
             chartCx.ChartAreas[0].AxisX.Minimum = 0;
             chartCx.ChartAreas[0].AxisX.Maximum = 180;
 
@@ -102,6 +92,7 @@ namespace AeroDynamicCalculator
 
 
             // cy
+            chartCy.Visible = true;
             chartCy.ChartAreas[0].AxisX.Minimum = 0;
             chartCy.ChartAreas[0].AxisX.Maximum = 180;
 
@@ -109,12 +100,14 @@ namespace AeroDynamicCalculator
 
 
             // mzn
+            chartM.Visible = true;
             chartM.ChartAreas[0].AxisX.Minimum = 0;
             chartM.ChartAreas[0].AxisX.Maximum = 180;
 
             chartM.ChartAreas[0].AxisX.Interval = 5;
 
             // mzc
+            chartMzc.Visible = true;
             chartMzc.ChartAreas[0].AxisX.Minimum = 0;
             chartMzc.ChartAreas[0].AxisX.Maximum = 180;
 
@@ -122,6 +115,7 @@ namespace AeroDynamicCalculator
 
 
             // xd
+            chartXD.Visible = true;
             chartXD.ChartAreas[0].AxisX.Minimum = 0;
             chartXD.ChartAreas[0].AxisX.Maximum = 180;
 
