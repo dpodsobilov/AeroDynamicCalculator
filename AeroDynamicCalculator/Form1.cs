@@ -28,8 +28,7 @@ namespace AeroDynamicCalculator
 
         private void buttonGraph_Click(object sender, EventArgs e)
         {
-            double checkR, checkRn, checkTetha;
-            if (!double.TryParse(textBoxR.Text, out checkR) || !double.TryParse(textBoxRn.Text, out checkRn) || !double.TryParse(textBoxTetha.Text, out checkTetha))
+            if (!double.TryParse(textBoxR.Text, out _) || !double.TryParse(textBoxRn.Text, out _) || !double.TryParse(textBoxTetha.Text, out _))
             {
                 MessageBox.Show("Недопустимые значения параметров. Введите действительные числа.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
