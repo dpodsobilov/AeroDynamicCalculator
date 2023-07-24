@@ -23,7 +23,39 @@ namespace AeroDynamicCalculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            InitilizeCharts();
+            RestartCharts();
+        }
 
+        private void buttonGraph_Click(object sender, EventArgs e)
+        {
+            double checkR, checkRn, checkTetha;
+            if (!double.TryParse(textBoxR.Text, out checkR) || !double.TryParse(textBoxRn.Text, out checkRn) || !double.TryParse(textBoxTetha.Text, out checkTetha))
+            {
+                MessageBox.Show("Недопустимые значения параметров. Введите действительные числа.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                capsule = new Formulas(Convert.ToDouble(textBoxR.Text), Convert.ToDouble(textBoxRn.Text), Convert.ToDouble(textBoxTetha.Text));
+
+                if (Convert.ToDouble(textBoxTetha.Text) < 0.0000000000001)
+                {
+                    textBoxTetha.Text = "45";
+                }
+
+                chartCx.Series[0].Points.Clear();
+                chartCy.Series[0].Points.Clear();
+                chartM.Series[0].Points.Clear();
+                chartMzc.Series[0].Points.Clear();
+                chartXD.Series[0].Points.Clear();
+
+                RestartCharts();
+                CalculateValues();
+            }
+        }
+
+        private void InitilizeCharts()
+        {
             // configuration for Charts
             // example: chartName.ChartAreas[0].AxisY.Maximum = 100;
 
@@ -57,39 +89,10 @@ namespace AeroDynamicCalculator
             chartXD.ChartAreas[0].AxisX.Title = "alpha";
             chartXD.ChartAreas[0].AxisY.Title = "xD";
             chartXD.Series[0].XValueType = ChartValueType.Double;
-
-            restartCharts();
-        }
-
-        private void buttonGraph_Click(object sender, EventArgs e)
-        {
-            double checkR, checkRn, checkTetha;
-            if (!double.TryParse(textBoxR.Text, out checkR) || !double.TryParse(textBoxRn.Text, out checkRn) || !double.TryParse(textBoxTetha.Text, out checkTetha))
-            {
-                MessageBox.Show("Недопустимые значения параметров. Введите действительные числа.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                capsule = new Formulas(Convert.ToDouble(textBoxR.Text), Convert.ToDouble(textBoxRn.Text), Convert.ToDouble(textBoxTetha.Text));
-
-                if (Convert.ToDouble(textBoxTetha.Text) < 0.0000000000001)
-                {
-                    textBoxTetha.Text = "45";
-                }
-
-                chartCx.Series[0].Points.Clear();
-                chartCy.Series[0].Points.Clear();
-                chartM.Series[0].Points.Clear();
-                chartMzc.Series[0].Points.Clear();
-                chartXD.Series[0].Points.Clear();
-
-                restartCharts();
-                calculateValues();
-            }
         }
 
         // moves graphs to the beginning
-        private void restartCharts()
+        private void RestartCharts()
         {
             // cx
             chartCx.ChartAreas[0].AxisX.Minimum = 0;
@@ -125,7 +128,7 @@ namespace AeroDynamicCalculator
             chartXD.ChartAreas[0].AxisX.Interval = 5;
         }
 
-        private void calculateValues()
+        private void CalculateValues()
         {
             //
             // counting aerodynamic params for a spherecial segment
@@ -138,7 +141,7 @@ namespace AeroDynamicCalculator
 
             for (double i = 0; i <= 180; i++)
             {
-                capsule.calculateValues(i, eps);
+                capsule.CalculateValues(i, eps);
 
                 chartCx.Series[0].Points.AddXY(i, capsule.Cx);
                 chartCy.Series[0].Points.AddXY(i, capsule.Cyn);

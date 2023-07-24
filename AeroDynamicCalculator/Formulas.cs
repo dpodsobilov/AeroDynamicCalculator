@@ -113,7 +113,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        internal void calculateValues(double iteration, double eps)
+        internal void CalculateValues(double iteration, double eps)
         {
             Alpha = iteration * PI / 180;
             cyn = CountCyn(eps);
