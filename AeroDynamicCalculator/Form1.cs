@@ -19,6 +19,7 @@ namespace AeroDynamicCalculator
         public Form1()
         {
             InitializeComponent();
+            tabControl.Hide();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,6 +48,7 @@ namespace AeroDynamicCalculator
                 chartMzc.Series[0].Points.Clear();
                 chartXD.Series[0].Points.Clear();
 
+                tabControl.Show();
                 RestartCharts();
                 CalculateValues();
             }

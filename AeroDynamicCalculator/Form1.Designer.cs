@@ -59,12 +59,24 @@
             this.chartCx = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartMzc = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartXD = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPageMzn = new System.Windows.Forms.TabPage();
+            this.tabPageCy = new System.Windows.Forms.TabPage();
+            this.tabPageCx = new System.Windows.Forms.TabPage();
+            this.tabPageMzc = new System.Windows.Forms.TabPage();
+            this.tabPageXd = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartCy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartCx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMzc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartXD)).BeginInit();
+            this.tabControl.SuspendLayout();
+            this.tabPageMzn.SuspendLayout();
+            this.tabPageCy.SuspendLayout();
+            this.tabPageCx.SuspendLayout();
+            this.tabPageMzc.SuspendLayout();
+            this.tabPageXd.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelModel
@@ -83,7 +95,7 @@
             // 
             this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
             this.pictureBox.Location = new System.Drawing.Point(24, 50);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(261, 240);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -118,7 +130,7 @@
             // 
             this.textBoxR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxR.Location = new System.Drawing.Point(380, 109);
-            this.textBoxR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxR.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxR.MaxLength = 20;
             this.textBoxR.Name = "textBoxR";
             this.textBoxR.Size = new System.Drawing.Size(182, 26);
@@ -129,7 +141,7 @@
             // 
             this.textBoxRn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxRn.Location = new System.Drawing.Point(380, 139);
-            this.textBoxRn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxRn.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRn.MaxLength = 20;
             this.textBoxRn.Name = "textBoxRn";
             this.textBoxRn.Size = new System.Drawing.Size(182, 26);
@@ -152,7 +164,7 @@
             // 
             this.textBoxTetha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxTetha.Location = new System.Drawing.Point(380, 169);
-            this.textBoxTetha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTetha.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTetha.MaxLength = 20;
             this.textBoxTetha.Name = "textBoxTetha";
             this.textBoxTetha.Size = new System.Drawing.Size(182, 26);
@@ -175,8 +187,8 @@
             // 
             chartArea11.Name = "ChartArea1";
             this.chartCy.ChartAreas.Add(chartArea11);
-            this.chartCy.Location = new System.Drawing.Point(24, 337);
-            this.chartCy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartCy.Location = new System.Drawing.Point(0, 0);
+            this.chartCy.Margin = new System.Windows.Forms.Padding(2);
             this.chartCy.Name = "chartCy";
             series11.BorderWidth = 3;
             series11.ChartArea = "ChartArea1";
@@ -195,7 +207,7 @@
             // 
             this.buttonGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonGraph.Location = new System.Drawing.Point(328, 240);
-            this.buttonGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonGraph.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGraph.Name = "buttonGraph";
             this.buttonGraph.Size = new System.Drawing.Size(242, 49);
             this.buttonGraph.TabIndex = 17;
@@ -207,8 +219,8 @@
             // 
             chartArea12.Name = "ChartArea1";
             this.chartM.ChartAreas.Add(chartArea12);
-            this.chartM.Location = new System.Drawing.Point(727, 35);
-            this.chartM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartM.Location = new System.Drawing.Point(0, 0);
+            this.chartM.Margin = new System.Windows.Forms.Padding(2);
             this.chartM.Name = "chartM";
             series12.BorderWidth = 3;
             series12.ChartArea = "ChartArea1";
@@ -227,8 +239,8 @@
             // 
             chartArea13.Name = "ChartArea1";
             this.chartCx.ChartAreas.Add(chartArea13);
-            this.chartCx.Location = new System.Drawing.Point(727, 337);
-            this.chartCx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartCx.Location = new System.Drawing.Point(0, 0);
+            this.chartCx.Margin = new System.Windows.Forms.Padding(2);
             this.chartCx.Name = "chartCx";
             series13.BorderWidth = 3;
             series13.ChartArea = "ChartArea1";
@@ -247,8 +259,8 @@
             // 
             chartArea14.Name = "ChartArea1";
             this.chartMzc.ChartAreas.Add(chartArea14);
-            this.chartMzc.Location = new System.Drawing.Point(24, 648);
-            this.chartMzc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartMzc.Location = new System.Drawing.Point(0, 0);
+            this.chartMzc.Margin = new System.Windows.Forms.Padding(2);
             this.chartMzc.Name = "chartMzc";
             series14.BorderWidth = 3;
             series14.ChartArea = "ChartArea1";
@@ -267,8 +279,8 @@
             // 
             chartArea15.Name = "ChartArea1";
             this.chartXD.ChartAreas.Add(chartArea15);
-            this.chartXD.Location = new System.Drawing.Point(727, 648);
-            this.chartXD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartXD.Location = new System.Drawing.Point(0, 0);
+            this.chartXD.Margin = new System.Windows.Forms.Padding(2);
             this.chartXD.Name = "chartXD";
             series15.BorderWidth = 3;
             series15.ChartArea = "ChartArea1";
@@ -283,18 +295,82 @@
             this.chartXD.Titles.Add(title15);
             this.chartXD.Visible = false;
             // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabPageMzn);
+            this.tabControl.Controls.Add(this.tabPageCy);
+            this.tabControl.Controls.Add(this.tabPageCx);
+            this.tabControl.Controls.Add(this.tabPageMzc);
+            this.tabControl.Controls.Add(this.tabPageXd);
+            this.tabControl.Location = new System.Drawing.Point(632, 22);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(675, 310);
+            this.tabControl.TabIndex = 26;
+            // 
+            // tabPageMzn
+            // 
+            this.tabPageMzn.Controls.Add(this.chartM);
+            this.tabPageMzn.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMzn.Name = "tabPageMzn";
+            this.tabPageMzn.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMzn.Size = new System.Drawing.Size(667, 284);
+            this.tabPageMzn.TabIndex = 0;
+            this.tabPageMzn.Text = "Mzn";
+            this.tabPageMzn.UseVisualStyleBackColor = true;
+            // 
+            // tabPageCy
+            // 
+            this.tabPageCy.Controls.Add(this.chartCy);
+            this.tabPageCy.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCy.Name = "tabPageCy";
+            this.tabPageCy.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCy.Size = new System.Drawing.Size(667, 284);
+            this.tabPageCy.TabIndex = 1;
+            this.tabPageCy.Text = "Cy";
+            this.tabPageCy.UseVisualStyleBackColor = true;
+            // 
+            // tabPageCx
+            // 
+            this.tabPageCx.Controls.Add(this.chartCx);
+            this.tabPageCx.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCx.Name = "tabPageCx";
+            this.tabPageCx.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCx.Size = new System.Drawing.Size(667, 284);
+            this.tabPageCx.TabIndex = 2;
+            this.tabPageCx.Text = "Cx";
+            this.tabPageCx.UseVisualStyleBackColor = true;
+            // 
+            // tabPageMzc
+            // 
+            this.tabPageMzc.Controls.Add(this.chartMzc);
+            this.tabPageMzc.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMzc.Name = "tabPageMzc";
+            this.tabPageMzc.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMzc.Size = new System.Drawing.Size(667, 284);
+            this.tabPageMzc.TabIndex = 3;
+            this.tabPageMzc.Text = "Mzc";
+            this.tabPageMzc.UseVisualStyleBackColor = true;
+            // 
+            // tabPageXd
+            // 
+            this.tabPageXd.Controls.Add(this.chartXD);
+            this.tabPageXd.Location = new System.Drawing.Point(4, 22);
+            this.tabPageXd.Name = "tabPageXd";
+            this.tabPageXd.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageXd.Size = new System.Drawing.Size(667, 284);
+            this.tabPageXd.TabIndex = 4;
+            this.tabPageXd.Text = "xD";
+            this.tabPageXd.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1443, 857);
-            this.Controls.Add(this.chartXD);
-            this.Controls.Add(this.chartMzc);
-            this.Controls.Add(this.chartCx);
-            this.Controls.Add(this.chartM);
+            this.ClientSize = new System.Drawing.Size(1330, 388);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonGraph);
-            this.Controls.Add(this.chartCy);
             this.Controls.Add(this.textBoxTetha);
             this.Controls.Add(this.labelTetha);
             this.Controls.Add(this.textBoxRn);
@@ -304,11 +380,10 @@
             this.Controls.Add(this.labelGeometry);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.labelModel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Расчет аэродинамических характеристик летательного аппарата";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartCy)).EndInit();
@@ -316,6 +391,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartCx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMzc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartXD)).EndInit();
+            this.tabControl.ResumeLayout(false);
+            this.tabPageMzn.ResumeLayout(false);
+            this.tabPageCy.ResumeLayout(false);
+            this.tabPageCx.ResumeLayout(false);
+            this.tabPageMzc.ResumeLayout(false);
+            this.tabPageXd.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,6 +419,12 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCx;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartMzc;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartXD;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPageMzn;
+        private System.Windows.Forms.TabPage tabPageCy;
+        private System.Windows.Forms.TabPage tabPageCx;
+        private System.Windows.Forms.TabPage tabPageMzc;
+        private System.Windows.Forms.TabPage tabPageXd;
     }
 }
 
