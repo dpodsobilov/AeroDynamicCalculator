@@ -15,6 +15,7 @@ namespace AeroDynamicCalculator
     public partial class Form1 : Form
     {
         Formulas capsule;
+        Data data;
     
         public Form1()
         {
@@ -36,6 +37,7 @@ namespace AeroDynamicCalculator
             else
             {
                 capsule = new Formulas(Convert.ToDouble(textBoxR.Text), Convert.ToDouble(textBoxRn.Text), Convert.ToDouble(textBoxTetha.Text));
+                data = new Data();
 
                 if (Convert.ToDouble(textBoxTetha.Text) < 0.0000000000001)
                 {
@@ -51,6 +53,8 @@ namespace AeroDynamicCalculator
                 tabControl.Show();
                 RestartCharts();
                 CalculateValues();
+                chartM.Series[0].Points.Clear();
+                chartM.Series[0].Points.DataBindXY(data.DictMzn.Keys, data.DictMzn.Values);
             }
         }
 
@@ -132,24 +136,97 @@ namespace AeroDynamicCalculator
 
             //Pass the filepath and filename to the StreamWriter Constructor
             //StreamWriter sw = new StreamWriter("C:\\Users\\Denis\\Desktop\\directory\\Test.txt");
+            
 
-
-            for (double i = 0; i <= 180; i++)
+            for (int i = 0; i <= 180; i++)
             {
-                capsule.CalculateValues(i, eps);
+                data = capsule.CalculateValues(i, eps);
 
-                chartCx.Series[0].Points.AddXY(i, capsule.Cx);
+                /*chartCx.Series[0].Points.AddXY(i, capsule.Cx);
                 chartCy.Series[0].Points.AddXY(i, capsule.Cyn);
                 chartM.Series[0].Points.AddXY(i, capsule.Mzn);
                 chartMzc.Series[0].Points.AddXY(i, capsule.Mzc);
-                chartXD.Series[0].Points.AddXY(i, capsule.XD);
+                chartXD.Series[0].Points.AddXY(i, capsule.XD);*/
 
                 //sw.WriteLine($"{i}  {cx}");
             }
+
+            //chartM.Series[0].Points.DataBindXY(data.DictMzn.Keys, data.DictMzn.Values);
+
+            //testTab();
+            //Close the file
+            //sw.Close();
         }
 
-        //Close the file
-        //sw.Close();
+        private void testTab()
+        {
+            //Control[] controls = tabControl.TabPages[0].Controls.Find("chartM", true);
+            //tabControl.TabPages[0].Controls.Remove(chartM);
+            tabControl.TabPages[0].Controls.Add(chartM);
+            tabControl.TabPages[1].Controls.Remove(chartCy);
+            tabControl.TabPages[1].Controls.Add(chartM);
+            tabControl.TabPages[2].Controls.Remove(chartCx);
+            tabControl.TabPages[2].Controls.Add(chartM);
+            //Chart controlChart = (Chart) controls[0];
+            //controlChart.Series[0].Points.Clear();
+        }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            switch(tabControl.SelectedIndex)
+            {
+                // mzn
+                case 0:
+                    chartM.Series[0].Points.Clear();
+                    chartM.ChartAreas[0].AxisY.Title = "Mzn";
+                    chartM.Titles.Clear();
+                    chartM.Titles.Add("Зависимость Mzn от угла атаки alpha");
+                    chartM.Series[0].Points.DataBindXY(data.DictMzn.Keys, data.DictMzn.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chartM);
+                    break;
+
+                // Cy
+                case 1:
+                    chartM.Series[0].Points.Clear();
+                    chartM.ChartAreas[0].AxisY.Title = "Cyn";
+                    chartM.Titles.Clear();
+                    chartM.Titles.Add("Зависимость Cyn от угла атаки alpha");
+                    chartM.Series[0].Points.DataBindXY(data.DictCyn.Keys, data.DictCyn.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chartM);
+                    chartM.Show();
+                    break;
+
+                // Cx
+                case 2:
+                    chartM.Series[0].Points.Clear();
+                    chartM.ChartAreas[0].AxisY.Title = "Cx";
+                    chartM.Titles.Clear();
+                    chartM.Titles.Add("Зависимость Cx от угла атаки alpha");
+                    chartM.Series[0].Points.DataBindXY(data.DictCx.Keys, data.DictCx.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chartM);
+                    break;
+
+                // Mzc
+                case 3:
+                    chartM.Series[0].Points.Clear();
+                    chartM.ChartAreas[0].AxisY.Title = "Mzc";
+                    chartM.Titles.Clear();
+                    chartM.Titles.Add("Зависимость Mzn от угла атаки alpha");
+                    chartM.Series[0].Points.DataBindXY(data.DictMzc.Keys, data.DictMzc.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chartM);
+                    break;
+                
+                // xD
+                case 4:
+                    chartM.Series[0].Points.Clear();
+                    chartM.ChartAreas[0].AxisY.Title = "xD";
+                    chartM.Titles.Clear();
+                    chartM.Titles.Add("Зависимость xD от угла атаки alpha");
+                    chartM.Series[0].Points.DataBindXY(data.DictXD.Keys, data.DictXD.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chartM);
+                    break;
+            }
+        }
     }
 
 }
