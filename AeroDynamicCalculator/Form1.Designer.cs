@@ -32,18 +32,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.labelModel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.labelGeometry = new System.Windows.Forms.Label();
@@ -53,25 +41,16 @@
             this.labelRn = new System.Windows.Forms.Label();
             this.textBoxTetha = new System.Windows.Forms.TextBox();
             this.labelTetha = new System.Windows.Forms.Label();
-            this.chartCy = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonGraph = new System.Windows.Forms.Button();
-            this.chartM = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartCx = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartMzc = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartXD = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageMzn = new System.Windows.Forms.TabPage();
             this.tabPageCy = new System.Windows.Forms.TabPage();
             this.tabPageCx = new System.Windows.Forms.TabPage();
             this.tabPageMzc = new System.Windows.Forms.TabPage();
             this.tabPageXd = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMzc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartXD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageMzn.SuspendLayout();
             this.SuspendLayout();
@@ -180,26 +159,6 @@
             this.labelTetha.TabIndex = 7;
             this.labelTetha.Text = "θ = ";
             // 
-            // chartCy
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chartCy.ChartAreas.Add(chartArea1);
-            this.chartCy.Location = new System.Drawing.Point(690, 369);
-            this.chartCy.Margin = new System.Windows.Forms.Padding(2);
-            this.chartCy.Name = "chartCy";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Name = "Series1";
-            this.chartCy.Series.Add(series1);
-            this.chartCy.Size = new System.Drawing.Size(675, 284);
-            this.chartCy.TabIndex = 16;
-            this.chartCy.Text = "chart1";
-            title1.Name = "TitleCy";
-            title1.Text = "Зависимость Cy от угла атаки alpha";
-            this.chartCy.Titles.Add(title1);
-            this.chartCy.Visible = false;
-            // 
             // buttonGraph
             // 
             this.buttonGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -212,85 +171,25 @@
             this.buttonGraph.UseVisualStyleBackColor = true;
             this.buttonGraph.Click += new System.EventHandler(this.buttonGraph_Click);
             // 
-            // chartM
+            // chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartM.ChartAreas.Add(chartArea2);
-            this.chartM.Location = new System.Drawing.Point(0, 0);
-            this.chartM.Margin = new System.Windows.Forms.Padding(2);
-            this.chartM.Name = "chartM";
-            series2.BorderWidth = 3;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Name = "Series1";
-            this.chartM.Series.Add(series2);
-            this.chartM.Size = new System.Drawing.Size(675, 284);
-            this.chartM.TabIndex = 18;
-            this.chartM.Text = "chart1";
-            title2.Name = "TitleM";
-            title2.Text = "Зависимость mzn от угла атаки alpha";
-            this.chartM.Titles.Add(title2);
-            this.chartM.Visible = false;
-            // 
-            // chartCx
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.chartCx.ChartAreas.Add(chartArea3);
-            this.chartCx.Location = new System.Drawing.Point(-9, 354);
-            this.chartCx.Margin = new System.Windows.Forms.Padding(2);
-            this.chartCx.Name = "chartCx";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Name = "Series1";
-            this.chartCx.Series.Add(series3);
-            this.chartCx.Size = new System.Drawing.Size(675, 284);
-            this.chartCx.TabIndex = 19;
-            this.chartCx.Text = "chart1";
-            title3.Name = "TitleCx";
-            title3.Text = "Зависимость Cx от угла атаки alpha";
-            this.chartCx.Titles.Add(title3);
-            this.chartCx.Visible = false;
-            // 
-            // chartMzc
-            // 
-            chartArea4.Name = "ChartArea1";
-            this.chartMzc.ChartAreas.Add(chartArea4);
-            this.chartMzc.Location = new System.Drawing.Point(-9, 669);
-            this.chartMzc.Margin = new System.Windows.Forms.Padding(2);
-            this.chartMzc.Name = "chartMzc";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Name = "Series1";
-            this.chartMzc.Series.Add(series4);
-            this.chartMzc.Size = new System.Drawing.Size(675, 284);
-            this.chartMzc.TabIndex = 24;
-            this.chartMzc.Text = "chart1";
-            title4.Name = "TitleMzc";
-            title4.Text = "Зависимость Mzc от угла атаки alpha";
-            this.chartMzc.Titles.Add(title4);
-            this.chartMzc.Visible = false;
-            // 
-            // chartXD
-            // 
-            chartArea5.Name = "ChartArea1";
-            this.chartXD.ChartAreas.Add(chartArea5);
-            this.chartXD.Location = new System.Drawing.Point(690, 669);
-            this.chartXD.Margin = new System.Windows.Forms.Padding(2);
-            this.chartXD.Name = "chartXD";
-            series5.BorderWidth = 3;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.Name = "Series1";
-            this.chartXD.Series.Add(series5);
-            this.chartXD.Size = new System.Drawing.Size(675, 284);
-            this.chartXD.TabIndex = 25;
-            this.chartXD.Text = "chart2";
-            title5.Name = "TitleXD";
-            title5.Text = "Зависимость xD от угла атаки alpha";
-            this.chartXD.Titles.Add(title5);
-            this.chartXD.Visible = false;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            this.chart.Location = new System.Drawing.Point(0, 0);
+            this.chart.Margin = new System.Windows.Forms.Padding(2);
+            this.chart.Name = "chart";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Name = "Series1";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(675, 284);
+            this.chart.TabIndex = 18;
+            this.chart.Text = "chart1";
+            title1.Name = "TitleM";
+            title1.Text = "Зависимость mzn от угла атаки alpha";
+            this.chart.Titles.Add(title1);
+            this.chart.Visible = false;
             // 
             // tabControl
             // 
@@ -308,7 +207,7 @@
             // 
             // tabPageMzn
             // 
-            this.tabPageMzn.Controls.Add(this.chartM);
+            this.tabPageMzn.Controls.Add(this.chart);
             this.tabPageMzn.Location = new System.Drawing.Point(4, 22);
             this.tabPageMzn.Name = "tabPageMzn";
             this.tabPageMzn.Padding = new System.Windows.Forms.Padding(3);
@@ -357,26 +256,12 @@
             this.tabPageXd.Text = "xD";
             this.tabPageXd.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(778, 354);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "label1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1405, 930);
-            this.Controls.Add(this.chartXD);
-            this.Controls.Add(this.chartMzc);
-            this.Controls.Add(this.chartCx);
-            this.Controls.Add(this.chartCy);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1321, 357);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonGraph);
             this.Controls.Add(this.textBoxTetha);
@@ -394,11 +279,7 @@
             this.Text = "Расчет аэродинамических характеристик летательного аппарата";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMzc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartXD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabPageMzn.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -417,19 +298,14 @@
         private System.Windows.Forms.Label labelRn;
         private System.Windows.Forms.TextBox textBoxTetha;
         private System.Windows.Forms.Label labelTetha;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartCy;
         private System.Windows.Forms.Button buttonGraph;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartM;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartCx;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartMzc;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartXD;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageMzn;
         private System.Windows.Forms.TabPage tabPageCy;
         private System.Windows.Forms.TabPage tabPageCx;
         private System.Windows.Forms.TabPage tabPageMzc;
         private System.Windows.Forms.TabPage tabPageXd;
-        private System.Windows.Forms.Label label1;
     }
 }
 
