@@ -16,6 +16,10 @@ namespace AeroDynamicCalculator
         double r, rn, tetha, alpha;
         double cyn, cx, mzn, mzc, xD;
 
+        Data data;
+
+        #region getters, setters
+
         public double R
         {
             get
@@ -86,6 +90,8 @@ namespace AeroDynamicCalculator
             }
         }
 
+        #endregion
+
         public Formulas()
         {
             r = 0.4;
@@ -95,6 +101,7 @@ namespace AeroDynamicCalculator
 
         public Formulas(double r, double rn, double tetha)
         {
+            data = new Data();
             this.r = r; 
             this.rn = rn; 
 
@@ -113,14 +120,22 @@ namespace AeroDynamicCalculator
             }
         }
 
-        internal void CalculateValues(double iteration, double eps)
+        internal Data CalculateValues(int iteration, double eps)
         {
-            Alpha = iteration * PI / 180;
+            Alpha = iteration * PI / 180.0;
             cyn = CountCyn(eps);
             cx = CountCx(eps);
             mzn = CountMzn(eps);
             mzc = CountMzc(eps);
             xD = CountXD(eps);
+
+            data.DictCx.Add(iteration, cx);
+            data.DictCyn.Add(iteration, cyn);
+            data.DictMzn.Add(iteration, mzn);
+            data.DictMzc.Add(iteration, mzc);
+            data.DictXD.Add(iteration, xD);
+
+            return data;
         }
 
         internal double CountBeta()
