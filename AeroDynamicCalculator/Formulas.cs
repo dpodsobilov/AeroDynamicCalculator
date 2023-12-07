@@ -135,7 +135,7 @@ namespace AeroDynamicCalculator
             }
             else
             {
-                this.tetha = tetha * PI / 180; 
+                this.tetha = (tetha % 360) * PI / 180; 
             }
         }
 

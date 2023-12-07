@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.labelModel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.labelGeometry = new System.Windows.Forms.Label();
@@ -51,10 +51,17 @@
             this.tabPageXd = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьМодельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьМодельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageMzn.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelModel
@@ -175,22 +182,22 @@
             // 
             // chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea4);
             this.chart.Location = new System.Drawing.Point(0, 0);
             this.chart.Margin = new System.Windows.Forms.Padding(2);
             this.chart.Name = "chart";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Name = "Series1";
-            this.chart.Series.Add(series1);
+            series4.BorderWidth = 3;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Name = "Series1";
+            this.chart.Series.Add(series4);
             this.chart.Size = new System.Drawing.Size(675, 284);
             this.chart.TabIndex = 18;
             this.chart.Text = "chart1";
-            title1.Name = "TitleM";
-            title1.Text = "Зависимость mzn от угла атаки alpha";
-            this.chart.Titles.Add(title1);
+            title4.Name = "TitleM";
+            title4.Text = "Зависимость mzn от угла атаки alpha";
+            this.chart.Titles.Add(title4);
             this.chart.Visible = false;
             // 
             // tabControl
@@ -280,6 +287,43 @@
             this.tabPage2.Text = "Cyv";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1321, 24);
+            this.menuStrip.TabIndex = 27;
+            this.menuStrip.Text = "menuStrip";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.загрузитьМодельToolStripMenuItem,
+            this.сохранитьМодельToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // загрузитьМодельToolStripMenuItem
+            // 
+            this.загрузитьМодельToolStripMenuItem.Name = "загрузитьМодельToolStripMenuItem";
+            this.загрузитьМодельToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьМодельToolStripMenuItem.Text = "Загрузить модель";
+            this.загрузитьМодельToolStripMenuItem.Click += new System.EventHandler(this.loadModelClick);
+            // 
+            // сохранитьМодельToolStripMenuItem
+            // 
+            this.сохранитьМодельToolStripMenuItem.Name = "сохранитьМодельToolStripMenuItem";
+            this.сохранитьМодельToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьМодельToolStripMenuItem.Text = "Сохранить модель";
+            this.сохранитьМодельToolStripMenuItem.Click += new System.EventHandler(this.saveModelClick);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +341,8 @@
             this.Controls.Add(this.labelGeometry);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.labelModel);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -306,6 +352,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabPageMzn.ResumeLayout(false);
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,6 +380,12 @@
         private System.Windows.Forms.TabPage tabPageXd;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьМодельToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьМодельToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

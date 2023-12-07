@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AeroDynamicCalculator
 {
@@ -22,6 +23,8 @@ namespace AeroDynamicCalculator
             InitializeComponent();
             tabControl.Hide();
             this.Width = 620;
+            openFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            saveFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -42,7 +45,7 @@ namespace AeroDynamicCalculator
                 capsule = new Formulas(Convert.ToDouble(textBoxR.Text), Convert.ToDouble(textBoxRn.Text), Convert.ToDouble(textBoxTetha.Text));
                 data = new Data();
 
-                if (Convert.ToDouble(textBoxTetha.Text) < 0.0000000000001)
+                if ((Convert.ToDouble(textBoxTetha.Text) % 360) < 0.0000000000001)
                 {
                     textBoxTetha.Text = "45";
                 }
@@ -167,6 +170,36 @@ namespace AeroDynamicCalculator
                     tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chart);
                     break;
             }
+        }
+
+        private void loadModelClick(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = openFileDialog.FileName;
+            using (StreamReader streamReader = new StreamReader(filename))
+            {
+                textBoxR.Text = streamReader.ReadLine();
+                textBoxRn.Text = streamReader.ReadLine();
+                textBoxTetha.Text = streamReader.ReadLine();
+            }
+            MessageBox.Show("Файл открыт");
+        }
+
+        private void saveModelClick(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveFileDialog.FileName;
+            using (StreamWriter streamWriter = new StreamWriter(filename))
+            {
+                streamWriter.WriteLine(textBoxR.Text.Trim());
+                streamWriter.WriteLine(textBoxRn.Text.Trim());
+                streamWriter.WriteLine(textBoxTetha.Text.Trim());
+            }
+            MessageBox.Show("Файл сохранен");
         }
     }
 
