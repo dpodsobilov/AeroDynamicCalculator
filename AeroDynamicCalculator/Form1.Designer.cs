@@ -49,6 +49,8 @@
             this.tabPageCx = new System.Windows.Forms.TabPage();
             this.tabPageMzc = new System.Windows.Forms.TabPage();
             this.tabPageXd = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -198,6 +200,8 @@
             this.tabControl.Controls.Add(this.tabPageCx);
             this.tabControl.Controls.Add(this.tabPageMzc);
             this.tabControl.Controls.Add(this.tabPageXd);
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Location = new System.Drawing.Point(632, 22);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -256,6 +260,26 @@
             this.tabPageXd.Text = "xD";
             this.tabPageXd.UseVisualStyleBackColor = true;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(667, 284);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Cxv";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(667, 284);
+            this.tabPage2.TabIndex = 6;
+            this.tabPage2.Text = "Cyv";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +330,8 @@
         private System.Windows.Forms.TabPage tabPageCx;
         private System.Windows.Forms.TabPage tabPageMzc;
         private System.Windows.Forms.TabPage tabPageXd;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

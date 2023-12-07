@@ -146,6 +146,26 @@ namespace AeroDynamicCalculator
                     chart.Series[0].Points.DataBindXY(data.DictXD.Keys, data.DictXD.Values);
                     tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chart);
                     break;
+                    
+                // cxv
+                case 5:
+                    chart.Series[0].Points.Clear();
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент лобового сопротивления cxv";
+                    chart.Titles.Clear();
+                    chart.Titles.Add("Зависимость cxv от угла атаки alpha");
+                    chart.Series[0].Points.DataBindXY(data.DictCxv.Keys, data.DictCxv.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chart);
+                    break;
+
+                // cyv
+                case 6:
+                    chart.Series[0].Points.Clear();
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент подъемной силы cyv";
+                    chart.Titles.Clear();
+                    chart.Titles.Add("Зависимость cyv от угла атаки alpha");
+                    chart.Series[0].Points.DataBindXY(data.DictCyv.Keys, data.DictCyv.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chart);
+                    break;
             }
         }
     }

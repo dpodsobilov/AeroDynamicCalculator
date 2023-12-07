@@ -15,6 +15,11 @@ namespace AeroDynamicCalculator
         // input values
         double r, rn, tetha, alpha;
         double cyn, cx, mzn, mzc, xD;
+        /// <summary>
+        /// cxv - коэффициент лобового сопротивнления
+        /// cyv - коэффициент подъемной силы
+        /// </summary>
+        double cxv, cyv;
 
         Data data;
 
@@ -89,6 +94,20 @@ namespace AeroDynamicCalculator
                 return xD;
             }
         }
+        public double Cxv
+        {
+            get
+            {
+                return cxv;
+            }
+        }
+        public double Cyv
+        {
+            get
+            {
+                return Cyv;
+            }
+        }
 
         #endregion
 
@@ -128,12 +147,16 @@ namespace AeroDynamicCalculator
             mzn = CountMzn(eps);
             mzc = CountMzc(eps);
             xD = CountXD(eps);
+            cxv = CountCxv();
+            cyv = CountCyv();
 
             data.DictCx.Add(iteration, cx);
             data.DictCyn.Add(iteration, cyn);
             data.DictMzn.Add(iteration, mzn);
             data.DictMzc.Add(iteration, mzc);
             data.DictXD.Add(iteration, xD);
+            data.DictCxv.Add(iteration, cxv);
+            data.DictCyv.Add(iteration, cyv);
 
             return data;
         }
@@ -300,5 +323,14 @@ namespace AeroDynamicCalculator
             return CountMzn(eps) / CountCyn(eps);
         }
 
+        internal double CountCxv()
+        {
+            return (Cx * Math.Cos(Alpha) - Cyn * Math.Sin(Alpha));
+        }
+
+        internal double CountCyv()
+        {
+            return (Cyn * Math.Cos(Alpha) + Cx * Math.Sin(Alpha));
+        }
     }
 }
