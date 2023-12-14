@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.labelModel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.labelGeometry = new System.Windows.Forms.Label();
@@ -72,9 +72,9 @@
             this.labelModel.Location = new System.Drawing.Point(22, 22);
             this.labelModel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelModel.Name = "labelModel";
-            this.labelModel.Size = new System.Drawing.Size(70, 20);
+            this.labelModel.Size = new System.Drawing.Size(163, 20);
             this.labelModel.TabIndex = 0;
-            this.labelModel.Text = "Модель";
+            this.labelModel.Text = "Спускаемая капсула";
             // 
             // pictureBox
             // 
@@ -95,9 +95,9 @@
             this.labelGeometry.Location = new System.Drawing.Point(325, 22);
             this.labelGeometry.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelGeometry.Name = "labelGeometry";
-            this.labelGeometry.Size = new System.Drawing.Size(260, 20);
+            this.labelGeometry.Size = new System.Drawing.Size(285, 20);
             this.labelGeometry.TabIndex = 2;
-            this.labelGeometry.Text = "Геометрические характеристики";
+            this.labelGeometry.Text = "Геометрические характеристики СК\r\n";
             // 
             // labelR
             // 
@@ -176,28 +176,28 @@
             this.buttonGraph.Name = "buttonGraph";
             this.buttonGraph.Size = new System.Drawing.Size(242, 49);
             this.buttonGraph.TabIndex = 17;
-            this.buttonGraph.Text = "Построить графики";
+            this.buttonGraph.Text = "Построить графики для АДХ";
             this.buttonGraph.UseVisualStyleBackColor = true;
             this.buttonGraph.Click += new System.EventHandler(this.buttonGraph_Click);
             // 
             // chart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Location = new System.Drawing.Point(0, 0);
             this.chart.Margin = new System.Windows.Forms.Padding(2);
             this.chart.Name = "chart";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Name = "Series1";
-            this.chart.Series.Add(series4);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Name = "Series1";
+            this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(675, 284);
             this.chart.TabIndex = 18;
             this.chart.Text = "chart1";
-            title4.Name = "TitleM";
-            title4.Text = "Зависимость mzn от угла атаки alpha";
-            this.chart.Titles.Add(title4);
+            title1.Name = "TitleM";
+            title1.Text = "Зависимость mzn от угла атаки alpha";
+            this.chart.Titles.Add(title1);
             this.chart.Visible = false;
             // 
             // tabControl
@@ -309,14 +309,14 @@
             // загрузитьМодельToolStripMenuItem
             // 
             this.загрузитьМодельToolStripMenuItem.Name = "загрузитьМодельToolStripMenuItem";
-            this.загрузитьМодельToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьМодельToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.загрузитьМодельToolStripMenuItem.Text = "Загрузить модель";
             this.загрузитьМодельToolStripMenuItem.Click += new System.EventHandler(this.loadModelClick);
             // 
             // сохранитьМодельToolStripMenuItem
             // 
             this.сохранитьМодельToolStripMenuItem.Name = "сохранитьМодельToolStripMenuItem";
-            this.сохранитьМодельToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьМодельToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.сохранитьМодельToolStripMenuItem.Text = "Сохранить модель";
             this.сохранитьМодельToolStripMenuItem.Click += new System.EventHandler(this.saveModelClick);
             // 
