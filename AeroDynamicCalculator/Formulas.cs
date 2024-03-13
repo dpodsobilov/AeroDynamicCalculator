@@ -20,6 +20,7 @@ namespace AeroDynamicCalculator
         /// cyv - коэффициент подъемной силы
         /// </summary>
         double cxv, cyv;
+        double cyvDerivative, cynDerivative, cxDerivative, cynSDerivative, cynCDerivative, cxSDerivative, cxCDerivative;
 
         Data data;
 
@@ -106,6 +107,13 @@ namespace AeroDynamicCalculator
             get
             {
                 return Cyv;
+            }
+        }
+        public double CyvDerivative
+        {
+            get
+            {
+                return cyvDerivative;
             }
         }
 
