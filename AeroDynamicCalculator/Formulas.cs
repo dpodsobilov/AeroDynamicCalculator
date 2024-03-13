@@ -129,8 +129,8 @@ namespace AeroDynamicCalculator
         public Formulas(double r, double rn, double tetha)
         {
             data = new Data();
-            this.r = r; 
-            this.rn = rn; 
+            this.r = r;
+            this.rn = rn;
 
             if (tetha < 0)
             {
@@ -157,6 +157,21 @@ namespace AeroDynamicCalculator
             xD = CountXD(eps);
             cxv = CountCxv();
             cyv = CountCyv();
+
+            #region Вычисления производных
+            rn = CountRn();
+
+            cxCDerivative = CountCxCDerivative(eps);
+            cxSDerivative = CountCxSDerivative(eps);
+            cxDerivative = CountCxDerivative();
+
+            cynCDerivative = CountCynCDerivative(eps);
+            cynSDerivative = CountCynSDerivative(eps);
+            cynDerivative = CountCynDerivative();
+
+            cyvDerivative = CountCyvDerivative();
+
+            #endregion
 
             data.DictCx.Add(iteration, cx);
             data.DictCyn.Add(iteration, cyn);
@@ -340,5 +355,29 @@ namespace AeroDynamicCalculator
         {
             return (Cyn * Math.Cos(Alpha) + Cx * Math.Sin(Alpha));
         }
+
+
+        #region Derivatives
+        /*double cyvDerivative, cynDerivative, cxDerivative, cynSDerivative, cynCDerivative, cxSDerivative, cxCDerivative;*/
+
+        internal double CountCyvDerivative() { 
+            return (cynDerivative * Math.Cos(Alpha) - cyn * Math.Sin(Alpha) + cxDerivative * Math.Sin(Alpha) + cx * Math.Cos(Alpha));
+        }
+
+        internal double CountCynDerivative() {
+            return (cynSDerivative * Math.Pow(rn, 2) + cynCDerivative * (1 - Math.Pow(rn, 2) * Math.Cos(tetha)));
+        }
+
+        internal double CountCxDerivative() { return 0; }
+
+        internal double CountCynSDerivative(double eps) { return 0; }
+
+        internal double CountCynCDerivative(double eps) { return 0; }
+
+        internal double CountCxSDerivative(double eps) { return 0; }
+
+        internal double CountCxCDerivative(double eps) { return 0; }
+
+        #endregion
     }
 }
