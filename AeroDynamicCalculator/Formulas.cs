@@ -26,7 +26,7 @@ namespace AeroDynamicCalculator
         double sinTetha, cosTetha, tanTetha, sin2Tetha, rnDash, l0, l, lc, xd, rl;
 
         // константы внутри одной итерации
-
+        double sinAlpha, cosAlpha, tanAlpha, sin2Alpha, beta, gamma, A;
 
         Data data;
 
@@ -176,7 +176,7 @@ namespace AeroDynamicCalculator
         {
             Alpha = iteration * PI / 180.0;
 
-            //CountConstantsOnIteraion();
+            CountConstantsOnIteraion();
 
             cyn = CountCyn(eps);
             cx = CountCx(eps);
@@ -187,7 +187,7 @@ namespace AeroDynamicCalculator
             cyv = CountCyv();
 
             #region Вычисления производных
-            /*rn = CountRn();
+            /*
 
             cxCDerivative = CountCxCDerivative(eps);
             cxSDerivative = CountCxSDerivative(eps);
@@ -213,22 +213,29 @@ namespace AeroDynamicCalculator
         }
 
         internal void CountConstantsOnIteraion() {
-            
+            sinAlpha = Math.Sin(Alpha);
+            cosAlpha = Math.Cos(Alpha);
+            tanAlpha = Math.Tan(Alpha);
+            sin2Alpha = Math.Sin(2 * Alpha);
+
+            beta = CountBeta();
+            gamma = CountGamma();
+            A = CountA();
         }
 
         internal double CountBeta()
         {
-            return Math.Asin(tanTetha / Math.Tan(Alpha));
+            return Math.Asin(tanTetha / tanAlpha);
         }
 
         internal double CountGamma()
         {
-            return Math.Acos(sinTetha / Math.Sin(Alpha));
+            return Math.Acos(sinTetha / sinAlpha);
         }
 
         internal double CountA()
         {
-            return Math.Sqrt(Math.Pow(Math.Sin(Alpha), 2) - Math.Pow(sinTetha, 2));
+            return Math.Sqrt(Math.Pow(sinAlpha, 2) - Math.Pow(sinTetha, 2));
         }
 
         //
@@ -240,14 +247,14 @@ namespace AeroDynamicCalculator
             // 0 <= Alpha <= Tetha
             if (Alpha >= eps && Alpha <= Tetha)
             {
-                return 0.5 * Math.Pow(cosTetha, 4) * Math.Sin(2 * Alpha);
+                return 0.5 * Math.Pow(cosTetha, 4) * sin2Alpha;
             }
             // Tetha < Alpha <= PI/2
             else
             {
-                return 0.25 * Math.Pow(cosTetha, 4) * Math.Sin(2 * Alpha) * (1 + 2 * CountBeta() / PI)
-                        + CountGamma() * Math.Sin(Alpha) / PI + (1 / (3 * PI)) * Math.Sin(Alpha) * sinTetha
-                        * (Math.Pow(sinTetha, 2) * (3 - Math.Pow(Math.Sin(Alpha), -2)) - 5) * CountA();
+                return 0.25 * Math.Pow(cosTetha, 4) * sin2Alpha * (1 + 2 * beta / PI)
+                        + gamma * sinAlpha / PI + (1 / (3 * PI)) * sinAlpha * sinTetha
+                        * (Math.Pow(sinTetha, 2) * (3 - Math.Pow(sinAlpha, -2)) - 5) * A;
             }
         }
 
@@ -257,16 +264,16 @@ namespace AeroDynamicCalculator
             if (Alpha >= eps && Alpha <= Tetha)
             {
                 return 2 * Math.Pow(cosTetha, 2) * (1 - 0.5 * Math.Pow(cosTetha, 2)
-                       - (1 - 0.75 * Math.Pow(cosTetha, 2)) * Math.Pow(Math.Sin(Alpha), 2));
+                       - (1 - 0.75 * Math.Pow(cosTetha, 2)) * Math.Pow(sinAlpha, 2));
             }
             // Tetha < Alpha <= PI/2
             else
             {
-                return (1 + 2 * CountBeta() / PI) * (1 - 0.5 * Math.Pow(cosTetha, 2)
-                       - (1 - 0.75 * Math.Pow(cosTetha, 2)) * Math.Pow(Math.Sin(Alpha), 2))
-                       * Math.Pow(cosTetha, 2) + CountGamma() * Math.Cos(Alpha) / PI
-                       + (Math.Cos(Alpha) / (2 * PI)) * sinTetha
-                       * (1 - 3 * Math.Pow(sinTetha, 2)) * CountA();
+                return (1 + 2 * beta / PI) * (1 - 0.5 * Math.Pow(cosTetha, 2)
+                       - (1 - 0.75 * Math.Pow(cosTetha, 2)) * Math.Pow(sinAlpha, 2))
+                       * Math.Pow(cosTetha, 2) + gamma * cosAlpha / PI
+                       + (cosAlpha / (2 * PI)) * sinTetha
+                       * (1 - 3 * Math.Pow(sinTetha, 2)) * A;
             }
         }
 
@@ -275,14 +282,14 @@ namespace AeroDynamicCalculator
             // 0 <= Alpha <= Tetha
             if (Alpha >= eps && Alpha <= Tetha)
             {
-                return 0.5 * Math.Pow(cosTetha, 2) * Math.Sin(2 * Alpha);
+                return 0.5 * Math.Pow(cosTetha, 2) * sin2Alpha;
             }
             // Tetha < Alpha <= PI/2
             else
             {
-                double tangens = tanTetha / Math.Tan(Alpha);
-                return 0.5 * Math.Pow(cosTetha, 2) * Math.Sin(2 * Alpha)
-                        * (1 + 2 * CountBeta() / PI + (2 / (3 * PI)) * Math.Sqrt(1 - Math.Pow(tangens, 2)) 
+                double tangens = tanTetha / tanAlpha;
+                return 0.5 * Math.Pow(cosTetha, 2) * sin2Alpha
+                        * (1 + 2 * beta / PI + (2 / (3 * PI)) * Math.Sqrt(1 - Math.Pow(tangens, 2)) 
                         * (2 * Math.Pow(tangens, -1) + tangens));
             }
         }
@@ -293,16 +300,16 @@ namespace AeroDynamicCalculator
             if (Alpha >= eps && Alpha <= Tetha)
             {
                 return 2 * Math.Pow(sinTetha, 2) + (1 - 3 * Math.Pow(sinTetha, 2))
-                        * Math.Pow(Math.Sin(Alpha), 2);
+                        * Math.Pow(sinAlpha, 2);
             }
             // Tetha < Alpha <= PI/2
             else
             {
-                double tangens = tanTetha / Math.Tan(Alpha);
-                return 0.5 * (1 + 2 * CountBeta() / PI)
+                double tangens = tanTetha / tanAlpha;
+                return 0.5 * (1 + 2 * beta / PI)
                         * (2 * Math.Pow(sinTetha, 2) + (1 - 3 * Math.Pow(sinTetha, 2))
-                        * Math.Pow(Math.Sin(Alpha), 2)) + (0.75 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
-                        * Math.Sin(2 * Alpha) * sin2Tetha;
+                        * Math.Pow(sinAlpha, 2)) + (0.75 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
+                        * sin2Alpha * sin2Tetha;
             }
         }
 
@@ -317,12 +324,12 @@ namespace AeroDynamicCalculator
 
         internal double CountCyn(double eps)
         {
-            return CountCynS(eps) * Math.Pow(CountRn(), 2) + CountCynC(eps) * (1 - Math.Pow(CountRn() * cosTetha, 2));
+            return CountCynS(eps) * Math.Pow(rnDash, 2) + CountCynC(eps) * (1 - Math.Pow(rnDash * cosTetha, 2));
         }
 
         internal double CountCx(double eps)
         {
-            return -CountCxS(eps) * Math.Pow(CountRn(), 2) - CountCxC(eps) * (1 - Math.Pow(CountRn() * cosTetha, 2));
+            return -CountCxS(eps) * Math.Pow(rnDash, 2) - CountCxC(eps) * (1 - Math.Pow(rnDash * cosTetha, 2));
         }
 
 
@@ -379,12 +386,12 @@ namespace AeroDynamicCalculator
 
         internal double CountCxv()
         {
-            return (Cx * Math.Cos(Alpha) - Cyn * Math.Sin(Alpha));
+            return (Cx * cosAlpha - Cyn * sinAlpha);
         }
 
         internal double CountCyv()
         {
-            return (Cyn * Math.Cos(Alpha) + Cx * Math.Sin(Alpha));
+            return (Cyn * cosAlpha + Cx * sinAlpha);
         }
 
 
@@ -392,7 +399,7 @@ namespace AeroDynamicCalculator
         /*double cyvDerivative, cynDerivative, cxDerivative, cynSDerivative, cynCDerivative, cxSDerivative, cxCDerivative;*/
 
         internal double CountCyvDerivative() { 
-            return (cynDerivative * Math.Cos(Alpha) - cyn * Math.Sin(Alpha) + cxDerivative * Math.Sin(Alpha) + cx * Math.Cos(Alpha));
+            return (cynDerivative * cosAlpha - cyn * sinAlpha + cxDerivative * sinAlpha + cx * cosAlpha);
         }
 
         internal double CountCynDerivative() {
