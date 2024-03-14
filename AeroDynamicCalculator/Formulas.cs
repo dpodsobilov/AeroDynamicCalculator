@@ -25,8 +25,11 @@ namespace AeroDynamicCalculator
         // константы с тетта
         double sinTetha, cosTetha, tanTetha, sin2Tetha, rnDash, l0, l, lc, xd, rl;
 
-        // константы внутри одной итерации
-        double sinAlpha, cosAlpha, tanAlpha, sin2Alpha, beta, gamma, A;
+        /// <summary
+        /// константы внутри одной итерации
+        /// cscAlpha - косеканс
+        /// </summary>
+        double sinAlpha, cosAlpha, tanAlpha, sin2Alpha, beta, gamma, A, cos2Alpha, cscAlpha, secAlpha;
 
         Data data;
 
@@ -187,7 +190,7 @@ namespace AeroDynamicCalculator
             cyv = CountCyv();
 
             #region Вычисления производных
-            /*
+            
 
             cxCDerivative = CountCxCDerivative(eps);
             cxSDerivative = CountCxSDerivative(eps);
@@ -197,7 +200,7 @@ namespace AeroDynamicCalculator
             cynSDerivative = CountCynSDerivative(eps);
             cynDerivative = CountCynDerivative();
 
-            cyvDerivative = CountCyvDerivative();*/
+            cyvDerivative = CountCyvDerivative();
 
             #endregion
 
@@ -217,6 +220,11 @@ namespace AeroDynamicCalculator
             cosAlpha = Math.Cos(Alpha);
             tanAlpha = Math.Tan(Alpha);
             sin2Alpha = Math.Sin(2 * Alpha);
+            cos2Alpha = Math.Cos(2 * Alpha);
+
+            cscAlpha = 1 / sinAlpha;
+            secAlpha = 1 / cosAlpha;
+
 
             beta = CountBeta();
             gamma = CountGamma();
@@ -396,21 +404,64 @@ namespace AeroDynamicCalculator
 
 
         #region Derivatives
-        /*double cyvDerivative, cynDerivative, cxDerivative, cynSDerivative, cynCDerivative, cxSDerivative, cxCDerivative;*/
 
         internal double CountCyvDerivative() { 
             return (cynDerivative * cosAlpha - cyn * sinAlpha + cxDerivative * sinAlpha + cx * cosAlpha);
         }
 
         internal double CountCynDerivative() {
-            return (cynSDerivative * Math.Pow(rn, 2) + cynCDerivative * (1 - Math.Pow(rn, 2) * cosTetha));
+            return (cynSDerivative * Math.Pow(rnDash, 2) + cynCDerivative * (1 - Math.Pow(rnDash * cosTetha, 2)));
+        }
+
+        internal double CountCynSDerivative(double eps) {
+            // 0 <= Alpha <= Tetha
+            if (Alpha >= eps && Alpha <= Tetha)
+            {
+                return (Math.Pow(cosTetha, 4) * cos2Alpha);
+            }
+            // Tetha < Alpha <= PI/2
+            else
+            {
+                double first = 0.5 * cos2Alpha * Math.Pow(cosTetha, 4) * (1 + 2 / PI * beta);
+                double second = (sin2Alpha * sinTetha * Math.Pow(cosTetha, 3)) 
+                                / (2 * PI * Math.Pow(sinAlpha, 2) * Math.Sqrt(1 - Math.Pow(tanTetha / tanAlpha, 2)));
+                double third = cosAlpha / PI * gamma;
+                double fourth = sinTetha / (PI * tanAlpha * Math.Sqrt(1 - Math.Pow(sinAlpha / sinTetha, 2)));
+                double fifth = (cosAlpha * (- Math.Pow(cscAlpha, 2) - 2) * Math.Pow(sinTetha, 3) * A) / (3 * PI);
+                double sixth = (Math.Pow(sinAlpha, 2) * cosAlpha * (-Math.Pow(cscAlpha, 2) - 2) * Math.Pow(sinTetha, 3)) / (3 * PI * A);
+                double seventh = (2 * (1 / tanAlpha) * cscAlpha * Math.Pow(sinTetha, 3) * A) / (3 * PI);
+
+                // вычитаем second
+                return first - second + third + fourth + fifth + sixth + seventh;
+            }
+        }
+
+        internal double CountCynCDerivative(double eps) {
+            double cos2ACosT2 = Math.Pow(cosTetha, 2) * cos2Alpha;
+            // 0 <= Alpha <= Tetha
+            if (Alpha >= eps && Alpha <= Tetha)
+            {
+                return cos2ACosT2;
+            }
+            // Tetha < Alpha <= PI/2
+            else
+            {
+                double sqrtTangens = Math.Sqrt(1 - Math.Pow(tanTetha / tanAlpha, 2));
+                double tanAcotTcotAtanT = (2 * tanAlpha * (1 / tanTetha) + (1 / tanAlpha) * tanTetha);
+
+                double first = (2 * tanAcotTcotAtanT * sqrtTangens) / (3 * PI);
+                double second = (2 * beta) / PI + 1;
+
+                double secMul = 0.5 * sin2Alpha * Math.Pow(cosTetha, 2);
+                double third = - (Math.Pow(cscAlpha, 2) * tanTetha) / (PI * sqrtTangens);
+                double fourth = (2 * (1 / tanAlpha) * Math.Pow(cscAlpha * tanTetha, 2) * tanAcotTcotAtanT) / (3 * PI * sqrtTangens);
+                double fifth = (2 * sqrtTangens * (2 * Math.Pow(secAlpha, 2) * (1 / tanTetha) - Math.Pow(cscAlpha, 2) * tanTetha)) / (3 * PI);
+
+                return cos2ACosT2 * (first + second);
+            }
         }
 
         internal double CountCxDerivative() { return 0; }
-
-        internal double CountCynSDerivative(double eps) { return 0; }
-
-        internal double CountCynCDerivative(double eps) { return 0; }
 
         internal double CountCxSDerivative(double eps) { return 0; }
 
