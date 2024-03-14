@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -457,15 +458,58 @@ namespace AeroDynamicCalculator
                 double fourth = (2 * (1 / tanAlpha) * Math.Pow(cscAlpha * tanTetha, 2) * tanAcotTcotAtanT) / (3 * PI * sqrtTangens);
                 double fifth = (2 * sqrtTangens * (2 * Math.Pow(secAlpha, 2) * (1 / tanTetha) - Math.Pow(cscAlpha, 2) * tanTetha)) / (3 * PI);
 
-                return cos2ACosT2 * (first + second);
+                return cos2ACosT2 * (first + second) + secMul * (third + fourth + fifth);
             }
         }
 
-        internal double CountCxDerivative() { return 0; }
+        internal double CountCxDerivative() {
+            return (- cxSDerivative * Math.Pow(rnDash, 2) - cxCDerivative * (1 - Math.Pow(rnDash * cosTetha, 2)));
+        }
 
-        internal double CountCxSDerivative(double eps) { return 0; }
+        internal double CountCxSDerivative(double eps)
+        {
+            // 0 <= Alpha <= Tetha
+            if (Alpha >= eps && Alpha <= Tetha)
+            {
+                return (sinAlpha * cosAlpha * Math.Pow(cosTetha, 2) * (3 * Math.Pow(cosTetha, 2) - 4));
+            }
+            // Tetha < Alpha <= PI/2
+            else
+            {
+                double first = (-2 * sinAlpha * cosAlpha * (1 - 3 * Math.Pow(cosTetha, 2) / 4) * Math.Pow(cosTetha, 2) * (2 * beta / PI + 1));
+                double second = (2 * Math.Pow(cscAlpha, 2) * sinTetha * cosTetha * (-Math.Pow(sinAlpha, 2) * (1 - 3 * Math.Pow(cosTetha, 2) / 4) - 0.5 * Math.Pow(cosTetha, 2) + 1))
+                    / (PI * Math.Sqrt(1 - Math.Pow(tanTetha / tanAlpha, 2)));
+                double third = (Math.Pow((1 / tanAlpha), 2) * sinTetha) / (PI * Math.Sqrt(1 - Math.Pow(cscAlpha * sinAlpha, 2)));
+                double fourth = (sinAlpha * gamma) / PI;
+                double fifth = (sinAlpha * sinTetha * (3 * Math.Pow(sinTetha, 2) - 1) * (Math.Pow(sinAlpha, 2) - Math.Pow(cosAlpha, 2) - Math.Pow(sinTetha, 2))) / (2 * PI * A);
 
-        internal double CountCxCDerivative(double eps) { return 0; }
+                // отнимаем second и fourth
+                return first - second + third - fourth + fifth;
+            }
+
+        }
+
+        internal double CountCxCDerivative(double eps) {
+            double sinAcosA3sinT2 = sinAlpha * cosAlpha * (1 - 3 * Math.Pow(sinTetha, 2));
+            // 0 <= Alpha <= Tetha
+            if (Alpha >= eps && Alpha <= Tetha)
+            {
+                return 2 * sinAcosA3sinT2;
+            }
+            // Tetha < Alpha <= PI/2
+            else
+            {
+                double sqrtTangens = Math.Sqrt(1 - Math.Pow(tanTetha / tanAlpha, 2));
+
+                double first = 2 * beta / PI + 1 ;
+                double second = (Math.Pow(cscAlpha, 2) * tanTetha * (Math.Pow(sinAlpha, 2) * (1 - 3 * Math.Pow(sinTetha, 2)) + 2 * Math.Pow(sinTetha, 2) )) / (PI * sqrtTangens);
+                double third = (3 * cos2Alpha * sin2Tetha * sqrtTangens) / (2 * PI);
+                double fourth = (3 * sin2Alpha * (1 / tanAlpha) * Math.Pow(cscAlpha, 2) * sin2Tetha * Math.Pow(tanTetha, 2)) / (4 * PI * sqrtTangens);
+
+                // вычитаем second
+                return sinAcosA3sinT2 * first - second + third; 
+            }
+        }
 
         #endregion
     }
