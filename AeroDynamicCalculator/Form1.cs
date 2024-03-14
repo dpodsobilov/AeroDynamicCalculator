@@ -169,6 +169,16 @@ namespace AeroDynamicCalculator
                     chart.Series[0].Points.DataBindXY(data.DictCyv.Keys, data.DictCyv.Values);
                     tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chart);
                     break;
+
+                // производная cyv
+                case 7:
+                    chart.Series[0].Points.Clear();
+                    chart.ChartAreas[0].AxisY.Title = "Производная коэффициента подъемной силы cyv";
+                    chart.Titles.Clear();
+                    chart.Titles.Add("Зависимость производной cyv от угла атаки alpha");
+                    chart.Series[0].Points.DataBindXY(data.DictCyvDer.Keys, data.DictCyvDer.Values);
+                    tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chart);
+                    break;
             }
         }
 

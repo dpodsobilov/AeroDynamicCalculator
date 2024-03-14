@@ -57,6 +57,7 @@
             this.сохранитьМодельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.tabPageCyvDer = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -209,6 +210,7 @@
             this.tabControl.Controls.Add(this.tabPageXd);
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPageCyvDer);
             this.tabControl.Location = new System.Drawing.Point(632, 22);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -324,6 +326,15 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // tabPageCyvDer
+            // 
+            this.tabPageCyvDer.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCyvDer.Name = "tabPageCyvDer";
+            this.tabPageCyvDer.Size = new System.Drawing.Size(667, 284);
+            this.tabPageCyvDer.TabIndex = 7;
+            this.tabPageCyvDer.Text = "Cyv\'(alpha)";
+            this.tabPageCyvDer.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,6 +397,7 @@
         private System.Windows.Forms.ToolStripMenuItem сохранитьМодельToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.TabPage tabPageCyvDer;
     }
 }
 

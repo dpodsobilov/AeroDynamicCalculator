@@ -190,20 +190,8 @@ namespace AeroDynamicCalculator
             cxv = CountCxv();
             cyv = CountCyv();
 
-            #region Вычисления производных
-            
-
-            cxCDerivative = CountCxCDerivative(eps);
-            cxSDerivative = CountCxSDerivative(eps);
-            cxDerivative = CountCxDerivative();
-
-            cynCDerivative = CountCynCDerivative(eps);
-            cynSDerivative = CountCynSDerivative(eps);
-            cynDerivative = CountCynDerivative();
-
-            cyvDerivative = CountCyvDerivative();
-
-            #endregion
+            cyvDerivative = CountCyvDerivative(eps);
+ 
 
             data.DictCx.Add(iteration, cx);
             data.DictCyn.Add(iteration, cyn);
@@ -212,6 +200,7 @@ namespace AeroDynamicCalculator
             data.DictXD.Add(iteration, xD);
             data.DictCxv.Add(iteration, cxv);
             data.DictCyv.Add(iteration, cyv);
+            data.DictCyvDer.Add(iteration, cyvDerivative);
 
             return data;
         }
@@ -406,7 +395,15 @@ namespace AeroDynamicCalculator
 
         #region Derivatives
 
-        internal double CountCyvDerivative() { 
+        internal double CountCyvDerivative(double eps) {
+            cxCDerivative = CountCxCDerivative(eps);
+            cxSDerivative = CountCxSDerivative(eps);
+            cxDerivative = CountCxDerivative();
+
+            cynCDerivative = CountCynCDerivative(eps);
+            cynSDerivative = CountCynSDerivative(eps);
+            cynDerivative = CountCynDerivative();
+
             return (cynDerivative * cosAlpha - cyn * sinAlpha + cxDerivative * sinAlpha + cx * cosAlpha);
         }
 
