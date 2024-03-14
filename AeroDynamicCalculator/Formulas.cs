@@ -23,7 +23,7 @@ namespace AeroDynamicCalculator
         double cyvDerivative, cynDerivative, cxDerivative, cynSDerivative, cynCDerivative, cxSDerivative, cxCDerivative;
 
         // константы с тетта
-        double sinTetha, cosTetha, tanTetha, sin2Tetha;
+        double sinTetha, cosTetha, tanTetha, sin2Tetha, rnDash, l0, l, lc, xd, rl;
 
         // константы внутри одной итерации
 
@@ -161,6 +161,15 @@ namespace AeroDynamicCalculator
             sin2Tetha = Math.Sin(2 * Tetha);
             cosTetha = Math.Cos(Tetha);
             tanTetha = Math.Tan(Tetha);
+
+            // другие константы с тетта
+            // rnDash, l0, l, lc, xd, rl;
+            rnDash = CountRn();
+            l = CountL();
+            l0 = CountL0();
+            lc = CountLc();
+            xd = CountXd();
+            rl = CountRL();
         }
 
         internal Data CalculateValues(int iteration, double eps)
@@ -204,7 +213,7 @@ namespace AeroDynamicCalculator
         }
 
         internal void CountConstantsOnIteraion() {
-        
+            
         }
 
         internal double CountBeta()
@@ -332,7 +341,7 @@ namespace AeroDynamicCalculator
 
         internal double CountL0()
         {
-            return CountL() / R * tanTetha;
+            return l / R * tanTetha;
         }
 
         internal double CountRL()
@@ -342,17 +351,16 @@ namespace AeroDynamicCalculator
 
         // value interpretates the center of truncated cone
         internal double CountXd()
-        {
-            double RL = CountRL();
+        {;
             return 2 / (3 * Math.Pow(cosTetha, 2)) *
-            ((1 + RL + RL * RL) / (1 - RL * RL)) - RL / (1 - RL);
+            ((1 + rl + rl * rl) / (1 - rl * rl)) - rl / (1 - rl);
         }
 
         internal double CountMzn(double eps)
         {
-            return -CountCynS(eps) * tanTetha / CountL0() * Math.Pow(CountRn(), 3)
-                    - CountCynC(eps) / CountL0() * (1 - Math.Pow(CountRn() * cosTetha, 2))
-                    * (CountXd() * CountLc() / CountL() + (1 - CountLc() / CountL()));
+            return -CountCynS(eps) * tanTetha / l0 * Math.Pow(rnDash, 3)
+                    - CountCynC(eps) / l0 * (1 - Math.Pow(rnDash * cosTetha, 2))
+                    * (xd * lc / l + (1 - lc / l));
         }
 
         // !!!!! I have question!!!! 
