@@ -191,7 +191,13 @@ namespace AeroDynamicCalculator
             cyv = CountCyv();
 
             cyvDerivative = CountCyvDerivative(eps);
- 
+
+            /* if (!double.IsNaN(cyv))
+             {
+                 cyvDerivative = CountCyvDerivative(eps);
+
+             }*/
+
 
             data.DictCx.Add(iteration, cx);
             data.DictCyn.Add(iteration, cyn);

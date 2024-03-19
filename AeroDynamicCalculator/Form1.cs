@@ -22,7 +22,7 @@ namespace AeroDynamicCalculator
         {
             InitializeComponent();
             tabControl.Hide();
-            this.Width = 620;
+            this.Width = 630;
             openFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             saveFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
         }
@@ -71,8 +71,8 @@ namespace AeroDynamicCalculator
         {
             chart.Visible = true;
             chart.ChartAreas[0].AxisX.Minimum = 0;
-            chart.ChartAreas[0].AxisX.Maximum = 180;
-            chart.ChartAreas[0].AxisX.Interval = 5;
+            chart.ChartAreas[0].AxisX.Maximum = 90;
+            chart.ChartAreas[0].AxisX.Interval = 2.5;
         }
 
         private void CalculateValues()
@@ -85,7 +85,7 @@ namespace AeroDynamicCalculator
             //Pass the filepath and filename to the StreamWriter Constructor
             //StreamWriter sw = new StreamWriter("C:\\Users\\Denis\\Desktop\\directory\\Test.txt");
 
-            for (int i = 0; i <= 180; i++)
+            for (int i = 0; i < 90; i++)
             {
                 data = capsule.CalculateValues(i, eps);
                 //sw.WriteLine($"{i}  {cx}");
