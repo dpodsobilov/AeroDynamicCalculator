@@ -424,7 +424,7 @@ namespace AeroDynamicCalculator
                 double second = (sin2Alpha * sinTetha * Math.Pow(cosTetha, 3)) 
                                 / (2 * PI * Math.Pow(sinAlpha, 2) * Math.Sqrt(1 - Math.Pow(tanTetha / tanAlpha, 2)));
                 double third = cosAlpha / PI * gamma;
-                double fourth = sinTetha / (PI * tanAlpha * Math.Sqrt(1 - Math.Pow(sinAlpha / sinTetha, 2)));
+                double fourth = sinTetha / (PI * tanAlpha * Math.Sqrt(1 - Math.Pow(sinTetha / sinAlpha, 2)));
                 double fifth = (cosAlpha * (- Math.Pow(cscAlpha, 2) - 2) * Math.Pow(sinTetha, 3) * A) / (3 * PI);
                 double sixth = (Math.Pow(sinAlpha, 2) * cosAlpha * (-Math.Pow(cscAlpha, 2) - 2) * Math.Pow(sinTetha, 3)) / (3 * PI * A);
                 double seventh = (2 * (1 / tanAlpha) * cscAlpha * Math.Pow(sinTetha, 3) * A) / (3 * PI);
@@ -476,7 +476,7 @@ namespace AeroDynamicCalculator
                 double first = (-2 * sinAlpha * cosAlpha * (1 - 3 * Math.Pow(cosTetha, 2) / 4) * Math.Pow(cosTetha, 2) * (2 * beta / PI + 1));
                 double second = (2 * Math.Pow(cscAlpha, 2) * sinTetha * cosTetha * (-Math.Pow(sinAlpha, 2) * (1 - 3 * Math.Pow(cosTetha, 2) / 4) - 0.5 * Math.Pow(cosTetha, 2) + 1))
                     / (PI * Math.Sqrt(1 - Math.Pow(tanTetha / tanAlpha, 2)));
-                double third = (Math.Pow((1 / tanAlpha), 2) * sinTetha) / (PI * Math.Sqrt(1 - Math.Pow(cscAlpha * sinAlpha, 2)));
+                double third = (Math.Pow((1 / tanAlpha), 2) * sinTetha) / (PI * Math.Sqrt(1 - Math.Pow(cscAlpha * sinTetha, 2)));
                 double fourth = (sinAlpha * gamma) / PI;
                 double fifth = (sinAlpha * sinTetha * (3 * Math.Pow(sinTetha, 2) - 1) * (Math.Pow(sinAlpha, 2) - Math.Pow(cosAlpha, 2) - Math.Pow(sinTetha, 2))) / (2 * PI * A);
 
@@ -504,7 +504,7 @@ namespace AeroDynamicCalculator
                 double fourth = (3 * sin2Alpha * (1 / tanAlpha) * Math.Pow(cscAlpha, 2) * sin2Tetha * Math.Pow(tanTetha, 2)) / (4 * PI * sqrtTangens);
 
                 // вычитаем second
-                return sinAcosA3sinT2 * first - second + third; 
+                return sinAcosA3sinT2 * first - second + third + fourth; 
             }
         }
 
