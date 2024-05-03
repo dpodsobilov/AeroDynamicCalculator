@@ -1,0 +1,69 @@
+﻿<head>
+  <title>Справка</title>
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 62.5%;
+    }
+    body {
+      font-family: sans-serif;
+      font-size: 2rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      background-color: #eee;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    .up {
+      position: absolute;
+      bottom: 3rem;
+      right: 3rem;
+
+      background-color: #ccc;
+      border-radius: 100%;
+      width: 3rem;
+      height: 3rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 2.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Справка по работе с системой</h1>
+  <div id="contests" class="contents">
+    <h2>Содержание</h2>
+    <ol>
+      <li><a href="#input-data">Ввод данных</a></li>
+      <li><a href="#">Просмотр графиков</a></li>
+      <li><a href="#">Сохранение и загрузка модели</a></li>
+    </ol>
+  </div>
+  <ol id="input-data">
+    <li>
+      <h3>Ввод данных</h3>
+    </li>
+  </ol>
+</body>
+<div class="up">
+  <a href="#contests"><span>&uarr;</span></a>
+</div>

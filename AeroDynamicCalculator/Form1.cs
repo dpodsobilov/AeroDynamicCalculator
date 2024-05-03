@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AeroDynamicCalculator.helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AeroDynamicCalculator
 {
+
     public partial class Form1 : Form
     {
+        const string FILE_PATH = "C:\\Users\\Denis\\Desktop\\Test.csv";
+        
         Formulas capsule;
         Data data;
     
@@ -30,6 +34,7 @@ namespace AeroDynamicCalculator
         private void Form1_Load(object sender, EventArgs e)
         {
             InitilizeChart();
+            AddHelpButton();
         }
 
         private void buttonGraph_Click(object sender, EventArgs e)
@@ -90,7 +95,7 @@ namespace AeroDynamicCalculator
                 data = capsule.CalculateValues(i, eps);
                 //sw.WriteLine($"{i}  {cx}");
             }
-
+            saveToCSVButton.Visible = true;
             //Close the file
             //sw.Close();
         }
@@ -210,6 +215,45 @@ namespace AeroDynamicCalculator
                 streamWriter.WriteLine(textBoxTetha.Text.Trim());
             }
             MessageBox.Show("Файл сохранен");
+        }
+
+        private void saveToCSVButton_Click(object sender, EventArgs e)
+        {
+                string result = CSVSaver.SaveToCSV(FILE_PATH, data);
+            if (result.Equals("SUCCESS"))
+            {
+                MessageBox.Show("Успешно сохранено", "Сохранение графиков", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show(result, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AddHelpButton()
+        {
+            // Create a new button
+            ToolStripButton helpButton = new ToolStripButton();
+            helpButton.Text = "Help";
+            helpButton.Click += HelpButton_Click; // Add event handler for button click
+
+            // Add the button to the ToolStrip
+            menuStrip.Items.Add(helpButton);
+        }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            // Handle button click event to open the HTML file
+            string pathToHelpFile = Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString() + @"\help\help.html";
+
+            try
+            {
+                System.Diagnostics.Process.Start(pathToHelpFile);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error opening help file: " + ex.Message + Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString() + @"\help\help.html");
+            }
         }
     }
 
