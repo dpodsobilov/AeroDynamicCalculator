@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.labelModel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.labelGeometry = new System.Windows.Forms.Label();
@@ -56,7 +56,6 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьМодельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьМодельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
@@ -181,22 +180,22 @@
             // 
             // chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea3);
             this.chart.Location = new System.Drawing.Point(0, 0);
             this.chart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart.Name = "chart";
-            series2.BorderWidth = 3;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Name = "Series1";
-            this.chart.Series.Add(series2);
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Name = "Series1";
+            this.chart.Series.Add(series3);
             this.chart.Size = new System.Drawing.Size(900, 350);
             this.chart.TabIndex = 18;
             this.chart.Text = "chart1";
-            title2.Name = "TitleM";
-            title2.Text = "Зависимость mzn от угла атаки alpha";
-            this.chart.Titles.Add(title2);
+            title3.Name = "TitleM";
+            title3.Text = "Зависимость mzn от угла атаки alpha";
+            this.chart.Titles.Add(title3);
             this.chart.Visible = false;
             // 
             // tabControl
@@ -309,8 +308,7 @@
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.справкаToolStripMenuItem});
+            this.файлToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -340,12 +338,6 @@
             this.сохранитьМодельToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
             this.сохранитьМодельToolStripMenuItem.Text = "Сохранить модель";
             this.сохранитьМодельToolStripMenuItem.Click += new System.EventHandler(this.saveModelClick);
-            // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // openFileDialog
             // 
@@ -434,7 +426,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.TabPage tabPageCyvDer;
         private System.Windows.Forms.HelpProvider helpProvider1;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.Button saveToCSVButton;
     }
 }

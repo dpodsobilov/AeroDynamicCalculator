@@ -19,9 +19,6 @@ namespace AeroDynamicCalculator.helpers
                 using (var writer = new StreamWriter(filePath))
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
-                    //csv.Configuration.Delimiter = ",";
-
-                    // Write the header row with labels
                     csv.WriteField("alpha");
                     csv.WriteField("mzn");
                     csv.WriteField("Cyn");
@@ -33,12 +30,6 @@ namespace AeroDynamicCalculator.helpers
                     csv.WriteField("cyv_alpha");
                     csv.NextRecord();
 
-                    // Write the data rows
-                    /*foreach (var kvp in tableData)
-                    {
-                        csv.WriteRecord(kvp.Value);
-                        csv.NextRecord();
-                    }*/
                     for (int alpha = 0; alpha < 90; alpha++)
                     {
                         csv.WriteField(alpha);

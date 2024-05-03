@@ -17,8 +17,6 @@ namespace AeroDynamicCalculator
 
     public partial class Form1 : Form
     {
-        const string FILE_PATH = "C:\\Users\\Denis\\Desktop\\Test.csv";
-        
         Formulas capsule;
         Data data;
     
@@ -27,14 +25,15 @@ namespace AeroDynamicCalculator
             InitializeComponent();
             tabControl.Hide();
             this.Width = 630;
-            openFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
-            saveFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            openFileDialog.Filter = "Текстовые файлы(*.txt)|*.txt|Все файлы(*.*)|*.*";
+            saveFileDialog.Filter = "Текстовые файлы(*.txt)|*.txt|Все файлы(*.*)|*.*";
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             InitilizeChart();
             AddHelpButton();
+            AddAboutButton();
         }
 
         private void buttonGraph_Click(object sender, EventArgs e)
@@ -87,17 +86,11 @@ namespace AeroDynamicCalculator
             //
             double eps = 0.0000000000001;
 
-            //Pass the filepath and filename to the StreamWriter Constructor
-            //StreamWriter sw = new StreamWriter("C:\\Users\\Denis\\Desktop\\directory\\Test.txt");
-
             for (int i = 0; i < 90; i++)
             {
                 data = capsule.CalculateValues(i, eps);
-                //sw.WriteLine($"{i}  {cx}");
             }
             saveToCSVButton.Visible = true;
-            //Close the file
-            //sw.Close();
         }
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)
@@ -193,17 +186,44 @@ namespace AeroDynamicCalculator
                 return;
             // получаем выбранный файл
             string filename = openFileDialog.FileName;
-            using (StreamReader streamReader = new StreamReader(filename))
+            try
             {
-                textBoxR.Text = streamReader.ReadLine();
-                textBoxRn.Text = streamReader.ReadLine();
-                textBoxTetha.Text = streamReader.ReadLine();
+                string r, rn, tetha;
+                using (StreamReader streamReader = new StreamReader(filename))
+                {
+                    try
+                    {
+                        r = streamReader.ReadLine().Trim();
+                        rn = streamReader.ReadLine().Trim();
+                        tetha = streamReader.ReadLine().Trim();
+                    }
+                    catch(Exception ex) 
+                    {
+                        MessageBox.Show("Ошибка открытия файла модели. Описание: " + ex.Message);
+                        throw new Exception("Ошибка открытия файла модели. Описание: " + ex.Message);
+                    }
+
+                }
+
+                if (double.TryParse(r, out _) && double.TryParse(rn, out _) && double.TryParse(tetha, out _))
+                {
+                    textBoxR.Text = r;
+                    textBoxRn.Text = rn;
+                    textBoxTetha.Text = tetha;
+                }
+                else throw new Exception("Неверные значения модели");
+                    
+                MessageBox.Show("Файл открыт");
+            } 
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Ошибка открытия файла модели. Описание: " + ex.Message);
             }
-            MessageBox.Show("Файл открыт");
         }
 
         private void saveModelClick(object sender, EventArgs e)
         {
+            saveFileDialog.Filter = "Текстовые файлы(*.txt)|*.txt|Все файлы(*.*)|*.*";
             if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             // получаем выбранный файл
@@ -219,7 +239,13 @@ namespace AeroDynamicCalculator
 
         private void saveToCSVButton_Click(object sender, EventArgs e)
         {
-                string result = CSVSaver.SaveToCSV(FILE_PATH, data);
+            
+            saveFileDialog.Filter = "CSV файлы(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            string filename = saveFileDialog.FileName;
+            string result = CSVSaver.SaveToCSV(filename, data);
             if (result.Equals("SUCCESS"))
             {
                 MessageBox.Show("Успешно сохранено", "Сохранение графиков", MessageBoxButtons.OK);
@@ -234,11 +260,37 @@ namespace AeroDynamicCalculator
         {
             // Create a new button
             ToolStripButton helpButton = new ToolStripButton();
-            helpButton.Text = "Help";
+            helpButton.Text = "Справка";
             helpButton.Click += HelpButton_Click; // Add event handler for button click
 
             // Add the button to the ToolStrip
             menuStrip.Items.Add(helpButton);
+        }
+
+        private void AddAboutButton()
+        {
+            // Create a new button
+            ToolStripButton aboutButton = new ToolStripButton();
+            aboutButton.Text = "О системе";
+            aboutButton.Click += AboutButton_Click; // Add event handler for button click
+
+            // Add the button to the ToolStrip
+            menuStrip.Items.Add(aboutButton);
+        }
+
+        private void AboutButton_Click(object sender, EventArgs e)
+        {
+            // Handle button click event to open the HTML file
+            string pathToHelpFile = Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString() + @"\help\about.html";
+
+            try
+            {
+                System.Diagnostics.Process.Start(pathToHelpFile);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при открытии файла: " + ex.Message + " " + Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString() + @"\help\about.html");
+            }
         }
 
         private void HelpButton_Click(object sender, EventArgs e)
@@ -252,7 +304,7 @@ namespace AeroDynamicCalculator
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error opening help file: " + ex.Message + Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString() + @"\help\help.html");
+                MessageBox.Show("Ошибка при открытии файла: " + ex.Message + " " + Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString() + @"\help\help.html");
             }
         }
     }
