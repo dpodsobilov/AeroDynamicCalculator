@@ -90,7 +90,7 @@ namespace AeroDynamicCalculator
             {
                 data = capsule.CalculateValues(i, eps);
             }
-            saveToCSVButton.Visible = true;
+            saveToExcelButton.Visible = true;
         }
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)
@@ -240,12 +240,13 @@ namespace AeroDynamicCalculator
         private void saveToCSVButton_Click(object sender, EventArgs e)
         {
             
-            saveFileDialog.Filter = "CSV файлы(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            saveFileDialog.Filter = "Книга Excel (*.xlxs)|*.xlsx|Книга Excel 97-2003 (*.xls)|*.xls|Все файлы(*.*)|*.*";
             
             if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = saveFileDialog.FileName;
-            string result = CSVSaver.SaveToCSV(filename, data);
+            string result = ExcelSaver.SaveToExcel(filename, data, capsule);
+            
             if (result.Equals("SUCCESS"))
             {
                 MessageBox.Show("Успешно сохранено", "Сохранение графиков", MessageBoxButtons.OK);
