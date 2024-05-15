@@ -13,6 +13,10 @@ namespace AeroDynamicCalculator
         Dictionary<int, double> dictMzn;
         Dictionary<int, double> dictMzc;
         Dictionary<int, double> dictXD;
+        Dictionary<int, double> dictCxv;
+        Dictionary<int, double> dictCyv;
+        Dictionary<int, double> dictCyvDer;
+
 
         public Dictionary<int, double> DictCx
         {
@@ -68,6 +72,46 @@ namespace AeroDynamicCalculator
             {
                 return dictXD;
             }
+            set
+            {
+                dictXD = value;
+            }
+        }
+
+        public Dictionary<int, double> DictCxv
+        {
+            get
+            {
+                return dictCxv;
+            }
+            set
+            {
+                dictCxv = value;
+            }
+        }
+
+        public Dictionary<int, double> DictCyv
+        {
+            get
+            {
+                return dictCyv;
+            }
+            set
+            {
+                dictCyv = value;
+            }
+        }
+
+        public Dictionary<int, double> DictCyvDer
+        {
+            get
+            {
+                return dictCyvDer;
+            }
+            set
+            {
+                dictCyvDer = value;
+            }
         }
 
         public Data()
@@ -77,6 +121,9 @@ namespace AeroDynamicCalculator
             dictMzn = new Dictionary<int, double>();
             dictMzc = new Dictionary<int, double>();
             dictXD = new Dictionary<int, double>();
+            dictCxv = new Dictionary<int, double>();
+            dictCyv = new Dictionary<int, double>();
+            dictCyvDer = new Dictionary<int, double>();
         }
     }
 }

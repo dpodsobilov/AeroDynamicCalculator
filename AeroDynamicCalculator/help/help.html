@@ -1,0 +1,225 @@
+﻿<head>
+  <title>Справка</title>
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 62.5%;
+    }
+    body {
+      font-family: sans-serif;
+      font-size: 2rem;
+      padding: 0 25rem;
+      margin: 0 auto;
+
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      position: relative;
+      scroll-behavior: smooth;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    .up {
+      position: fixed;
+      bottom: 3rem;
+      right: 3rem;
+
+      background-color: #ccc;
+      border-radius: 100%;
+      width: 3rem;
+      height: 3rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 2.5rem;
+    }
+
+    .up__link {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .input-values-list {
+      list-style: none;
+    }
+    .input-values-list li:before {
+      content: "– ";
+    }
+    .image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-height: 50rem;
+      max-width: 100%;
+      margin: 2rem;
+    }
+    .image img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+    p {
+      text-indent: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Справка по работе с системой</h1>
+  <div id="contests" class="contents">
+    <h2>Содержание</h2>
+    <ol>
+      <li><a href="#input-data">Ввод данных</a></li>
+      <li><a href="#charts">Просмотр графиков</a></li>
+      <li><a href="#save-and-load">Сохранение и загрузка модели</a></li>
+    </ol>
+  </div>
+  <ol id="content">
+    <li>
+      <h3 id="input-data">Ввод данных</h3>
+      <div class="content">
+        <p>
+          При запуске приложения пользователь попадает на главную страницу, где
+          он может ввести геометрические параметры модели:
+        </p>
+        <ul class="input-values-list">
+          <li>R - радиус донной части СК;</li>
+          <li>r<sub>n</sub> - радиус сферического сегмента;</li>
+          <li>&theta; - угол</li>
+        </ul>
+        <div class="image">
+          <img src="./main.jpg" alt="Главная экранная форма" />
+        </div>
+        <p>
+          Пользователь не может ввести отрицательные значения входных
+          параметров. При попытке это сделать, система откроет модальное окно с
+          преупреждением о некорректных входных данных и назначит входные данные
+          автоматически.
+        </p>
+        <div class="image">
+          <img
+            src="./error.jpg"
+            alt="Модальное окно с предупреждением о некорректном вводе"
+          />
+        </div>
+      </div>
+    </li>
+    <li>
+      <h3 id="charts">Просмотр графиков</h3>
+      <p>
+        После ввода корректных значений и нажати на кнопку "Построить графики
+        для АДХ" система расширяет экранную форму и создает панель с вкладками.
+        Пользователь может переключаться между вкладками панели для просмотра
+        всех графиков.
+      </p>
+      <div class="image">
+        <img src="./graph-1.jpg" alt="График 1" />
+        <span>График зависимости Mzn от угла &alpha;</span>
+      </div>
+      <div class="image">
+        <img src="./graph-2.jpg" alt="График 2" />
+        <span>График зависимости Cy от угла &alpha;</span>
+      </div>
+      <div class="image">
+        <img src="./graph-3.jpg" alt="График 3" />
+        <span>График зависимости Cx от угла &alpha;</span>
+      </div>
+      <div class="image">
+        <img src="./graph-4.jpg" alt="График 4" />
+        <span>График зависимости Mzc от угла &alpha;</span>
+      </div>
+      <div class="image">
+        <img src="./graph-5.jpg" alt="График 5" />
+        <span>График зависимости xD от угла &alpha;</span>
+      </div>
+      <div class="image">
+        <img src="./graph-6.jpg" alt="График 6" />
+        <span>График зависимости Cxv от угла &alpha;</span>
+      </div>
+      <div class="image">
+        <img src="./graph-7.jpg" alt="График 7" />
+        <span>График зависимости Cyv от угла &alpha;</span>
+      </div>
+      <div class="image">
+        <img src="./graph-8.jpg" alt="График 8" />
+        <span>График зависимости Cyv'(&alpha;) от угла &alpha;</span>
+      </div>
+    </li>
+    <li>
+      <h3 id="save-and-load">Сохранение и загрузка параметров модели</h3>
+      <p>
+        Пользователь может сохранить параметры модели в файл и загрузить их из
+        файла в программу. Для сохранения необходимо заполнить входные параметры
+        и в шапке экранной формы нажать на вкладку "Файл" и выбрать пункт
+        "Сохранить параметры". Откроется экранная форма сохранения файла в
+        системе Windows.
+      </p>
+      <div class="image">
+        <img src="./save-model-dialog.jpg" alt="Сохранение модели" />
+        <span>Экранная форма сохранения файла в системе Windows</span>
+      </div>
+      <br />
+      <p>
+        После сохранения система отобразит модальное окно об успехе или неудаче.
+      </p>
+      <div class="image">
+        <img src="./save-model.jpg" alt="Сохранение модели" />
+        <span
+          >Модальное окно с сообщением об успешном сохранении параметров
+          модели</span
+        >
+      </div>
+      <br />
+      <p>
+        Для загрузки параметров модели из файла необходимо в шапке экранной
+        формы нажать на вкладку "Файл" и выбрать пункт "Загрузить параметры".
+        Откроется экранная форма загрузки файла в системе Windows.
+      </p>
+      <div class="image">
+        <img src="./save-model-dialog.jpg" alt="Загрузка модели" />
+        <span
+          >Модальное окно с сообщением об успешном сохранении параметров
+          модели</span
+        >
+      </div>
+      <br />
+      <p>
+        После загрузки система отобразит модальное окно об успехе или неудаче.
+      </p>
+      <div class="image">
+        <img src="./open-model-error.jpg" alt="Модальное окно с ошибкой" />
+        <span
+          >Модальное окно с сообщением о неупешной загрузке параметров
+          модели</span
+        >
+      </div>
+      <div class="image">
+        <img src="./open-model.jpg" alt="Модальное окно с успехом" />
+        <span
+          >Модальное окно с сообщением об успешной загрузке параметров
+          модели</span
+        >
+      </div>
+    </li>
+  </ol>
+</body>
+<div class="up">
+  <a class="up__link" href="#contests">
+    <span>&uarr;</span>
+  </a>
+</div>
