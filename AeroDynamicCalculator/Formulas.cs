@@ -133,7 +133,7 @@ namespace AeroDynamicCalculator
         {
             r = 0.4;
             rn = 0.3;
-            tetha = 45;
+            tetha = 45 * PI / 180;
         }
 
         public Formulas(double r, double rn, double tetha)

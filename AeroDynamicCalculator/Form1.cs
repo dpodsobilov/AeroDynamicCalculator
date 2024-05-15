@@ -245,7 +245,7 @@ namespace AeroDynamicCalculator
             if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = saveFileDialog.FileName;
-            string result = ExcelSaver.SaveToExcel(filename, data);
+            string result = ExcelSaver.SaveToExcel(filename, data, capsule);
             
             if (result.Equals("SUCCESS"))
             {
