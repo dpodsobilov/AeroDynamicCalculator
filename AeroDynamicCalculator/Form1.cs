@@ -86,11 +86,16 @@ namespace AeroDynamicCalculator
             //
             double eps = 0.0000000000001;
 
-            for (int i = 0; i < 90; i++)
+            /*for (int i = 0; i < 90; i++)
+            {
+                data = capsule.CalculateValues(i, eps);
+            }*/
+            for (double i = 0; i < 90; i += 0.5)
             {
                 data = capsule.CalculateValues(i, eps);
             }
             saveToExcelButton.Visible = true;
+            tabControl.SelectedIndex = 0;
         }
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)

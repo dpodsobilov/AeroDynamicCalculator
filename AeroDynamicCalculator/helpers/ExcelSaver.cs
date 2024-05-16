@@ -22,7 +22,7 @@ namespace AeroDynamicCalculator.helpers
                 excelWS.Cells[1, 1] = "R";
                 excelWS.Cells[1, 2] = "rn";
                 excelWS.Cells[1, 3] = "tetha";
-                excelWS.Cells[1, 4] = "alpha";
+                excelWS.Cells[1, 4] = "i";
                 excelWS.Cells[1, 5] = "mzn";
                 excelWS.Cells[1, 6] = "Cyn";
                 excelWS.Cells[1, 7] = "Cx";
@@ -36,26 +36,26 @@ namespace AeroDynamicCalculator.helpers
                 excelWS.Cells[2, 2] = capsule.Rn;
                 excelWS.Cells[2, 3] = (capsule.Tetha * 180 / Math.PI);
 
-                for (int alpha = 0; alpha < 90; alpha++)
+                for (int i = 0; i < data.DictCx.Count; ++i)
                 {
-                    double mzn = data.DictMzn.Values.ElementAt(alpha);
-                    double cyn = data.DictCyn.Values.ElementAt(alpha);
-                    double cx = data.DictCx.Values.ElementAt(alpha);
-                    double mzc = data.DictMzc.Values.ElementAt(alpha);
-                    double xd = data.DictXD.Values.ElementAt(alpha);
-                    double cxv = data.DictCxv.Values.ElementAt(alpha); 
-                    double cyv = data.DictCyv.Values.ElementAt(alpha);
-                    double cyvDer = data.DictCyvDer.Values.ElementAt(alpha);
+                    double mzn = data.DictMzn.Values.ElementAt(i);
+                    double cyn = data.DictCyn.Values.ElementAt(i);
+                    double cx = data.DictCx.Values.ElementAt(i);
+                    double mzc = data.DictMzc.Values.ElementAt(i);
+                    double xd = data.DictXD.Values.ElementAt(i);
+                    double cxv = data.DictCxv.Values.ElementAt(i); 
+                    double cyv = data.DictCyv.Values.ElementAt(i);
+                    double cyvDer = data.DictCyvDer.Values.ElementAt(i);
 
-                    excelWS.Cells[2 + alpha, 4] = alpha;
-                    excelWS.Cells[2 + alpha, 5] = Double.IsNaN(mzn) ? (double?)null : mzn;
-                    excelWS.Cells[2 + alpha, 6] = Double.IsNaN(cyn) ? (double?)null : cyn;
-                    excelWS.Cells[2 + alpha, 7] = Double.IsNaN(cx) ? (double?)null : cx;
-                    excelWS.Cells[2 + alpha, 8] = Double.IsNaN(mzc) ? (double?)null : mzc;
-                    excelWS.Cells[2 + alpha, 9] = Double.IsNaN(xd) ? (double?)null : xd;
-                    excelWS.Cells[2 + alpha, 10] = Double.IsNaN(cxv) ? (double?)null : cxv;
-                    excelWS.Cells[2 + alpha, 11] = Double.IsNaN(cyv) ? (double?)null : cyv;
-                    excelWS.Cells[2 + alpha, 12] = Double.IsNaN(cyvDer) ? (double?)null : cyvDer;
+                    excelWS.Cells[2 + i, 4] = i / 2.0;
+                    excelWS.Cells[2 + i, 5] = Double.IsNaN(mzn) ? (double?)null : mzn;
+                    excelWS.Cells[2 + i, 6] = Double.IsNaN(cyn) ? (double?)null : cyn;
+                    excelWS.Cells[2 + i, 7] = Double.IsNaN(cx) ? (double?)null : cx;
+                    excelWS.Cells[2 + i, 8] = Double.IsNaN(mzc) ? (double?)null : mzc;
+                    excelWS.Cells[2 + i, 9] = Double.IsNaN(xd) ? (double?)null : xd;
+                    excelWS.Cells[2 + i, 10] = Double.IsNaN(cxv) ? (double?)null : cxv;
+                    excelWS.Cells[2 + i, 11] = Double.IsNaN(cyv) ? (double?)null : cyv;
+                    excelWS.Cells[2 + i, 12] = Double.IsNaN(cyvDer) ? (double?)null : cyvDer;
                 }
 
                 excelWB.SaveAs(filePath);

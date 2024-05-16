@@ -176,7 +176,7 @@ namespace AeroDynamicCalculator
             rl = CountRL();
         }
 
-        internal Data CalculateValues(int iteration, double eps)
+        internal Data CalculateValues(double iteration, double eps)
         {
             Alpha = iteration * PI / 180.0;
 
