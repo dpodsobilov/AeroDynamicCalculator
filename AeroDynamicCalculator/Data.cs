@@ -8,17 +8,17 @@ namespace AeroDynamicCalculator
 {
     internal class Data
     {
-        Dictionary<int, double> dictCx;
-        Dictionary<int, double> dictCyn;
-        Dictionary<int, double> dictMzn;
-        Dictionary<int, double> dictMzc;
-        Dictionary<int, double> dictXD;
-        Dictionary<int, double> dictCxv;
-        Dictionary<int, double> dictCyv;
-        Dictionary<int, double> dictCyvDer;
+        Dictionary<double, double> dictCx;
+        Dictionary<double, double> dictCyn;
+        Dictionary<double, double> dictMzn;
+        Dictionary<double, double> dictMzc;
+        Dictionary<double, double> dictXD;
+        Dictionary<double, double> dictCxv;
+        Dictionary<double, double> dictCyv;
+        Dictionary<double, double> dictCyvDer;
 
 
-        public Dictionary<int, double> DictCx
+        public Dictionary<double, double> DictCx
         {
             get
             {
@@ -30,7 +30,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        public Dictionary<int, double> DictCyn
+        public Dictionary<double, double> DictCyn
         {
             get
             {
@@ -42,7 +42,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        public Dictionary<int, double> DictMzn
+        public Dictionary<double, double> DictMzn
         {
             get
             {
@@ -54,7 +54,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        public Dictionary<int, double> DictMzc
+        public Dictionary<double, double> DictMzc
         {
             get
             {
@@ -66,7 +66,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        public Dictionary<int, double> DictXD
+        public Dictionary<double, double> DictXD
         {
             get
             {
@@ -78,7 +78,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        public Dictionary<int, double> DictCxv
+        public Dictionary<double, double> DictCxv
         {
             get
             {
@@ -90,7 +90,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        public Dictionary<int, double> DictCyv
+        public Dictionary<double, double> DictCyv
         {
             get
             {
@@ -102,7 +102,7 @@ namespace AeroDynamicCalculator
             }
         }
 
-        public Dictionary<int, double> DictCyvDer
+        public Dictionary<double, double> DictCyvDer
         {
             get
             {
@@ -116,14 +116,14 @@ namespace AeroDynamicCalculator
 
         public Data()
         {
-            dictCx = new Dictionary<int, double>();
-            dictCyn = new Dictionary<int, double>();
-            dictMzn = new Dictionary<int, double>();
-            dictMzc = new Dictionary<int, double>();
-            dictXD = new Dictionary<int, double>();
-            dictCxv = new Dictionary<int, double>();
-            dictCyv = new Dictionary<int, double>();
-            dictCyvDer = new Dictionary<int, double>();
+            dictCx = new Dictionary<double, double>();
+            dictCyn = new Dictionary<double, double>();
+            dictMzn = new Dictionary<double, double>();
+            dictMzc = new Dictionary<double, double>();
+            dictXD = new Dictionary<double, double>();
+            dictCxv = new Dictionary<double, double>();
+            dictCyv = new Dictionary<double, double>();
+            dictCyvDer = new Dictionary<double, double>();
         }
     }
 }

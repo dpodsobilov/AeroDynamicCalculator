@@ -185,7 +185,7 @@
             this.chart.Location = new System.Drawing.Point(0, 0);
             this.chart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart.Name = "chart";
-            series1.BorderWidth = 3;
+            series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Name = "Series1";
@@ -209,7 +209,7 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPageCyvDer);
             this.tabControl.Location = new System.Drawing.Point(843, 27);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(900, 382);
@@ -220,9 +220,9 @@
             // 
             this.tabPageMzn.Controls.Add(this.chart);
             this.tabPageMzn.Location = new System.Drawing.Point(4, 25);
-            this.tabPageMzn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageMzn.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageMzn.Name = "tabPageMzn";
-            this.tabPageMzn.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageMzn.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageMzn.Size = new System.Drawing.Size(892, 353);
             this.tabPageMzn.TabIndex = 0;
             this.tabPageMzn.Text = "Mzn";
@@ -231,9 +231,9 @@
             // tabPageCy
             // 
             this.tabPageCy.Location = new System.Drawing.Point(4, 25);
-            this.tabPageCy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageCy.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageCy.Name = "tabPageCy";
-            this.tabPageCy.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageCy.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageCy.Size = new System.Drawing.Size(892, 353);
             this.tabPageCy.TabIndex = 1;
             this.tabPageCy.Text = "Cy";
@@ -242,9 +242,9 @@
             // tabPageCx
             // 
             this.tabPageCx.Location = new System.Drawing.Point(4, 25);
-            this.tabPageCx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageCx.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageCx.Name = "tabPageCx";
-            this.tabPageCx.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageCx.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageCx.Size = new System.Drawing.Size(892, 353);
             this.tabPageCx.TabIndex = 2;
             this.tabPageCx.Text = "Cx";
@@ -253,9 +253,9 @@
             // tabPageMzc
             // 
             this.tabPageMzc.Location = new System.Drawing.Point(4, 25);
-            this.tabPageMzc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageMzc.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageMzc.Name = "tabPageMzc";
-            this.tabPageMzc.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageMzc.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageMzc.Size = new System.Drawing.Size(892, 353);
             this.tabPageMzc.TabIndex = 3;
             this.tabPageMzc.Text = "Mzc";
@@ -264,9 +264,9 @@
             // tabPageXd
             // 
             this.tabPageXd.Location = new System.Drawing.Point(4, 25);
-            this.tabPageXd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageXd.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageXd.Name = "tabPageXd";
-            this.tabPageXd.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageXd.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageXd.Size = new System.Drawing.Size(892, 353);
             this.tabPageXd.TabIndex = 4;
             this.tabPageXd.Text = "xD";
@@ -275,9 +275,9 @@
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(892, 353);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "Cxv";
@@ -286,9 +286,9 @@
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(892, 353);
             this.tabPage2.TabIndex = 6;
             this.tabPage2.Text = "Cyv";
@@ -297,7 +297,7 @@
             // tabPageCyvDer
             // 
             this.tabPageCyvDer.Location = new System.Drawing.Point(4, 25);
-            this.tabPageCyvDer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageCyvDer.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageCyvDer.Name = "tabPageCyvDer";
             this.tabPageCyvDer.Size = new System.Drawing.Size(892, 353);
             this.tabPageCyvDer.TabIndex = 7;
