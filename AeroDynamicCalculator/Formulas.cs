@@ -286,7 +286,7 @@ namespace AeroDynamicCalculator
             // 0 <= Alpha <= Tetha
             if (Alpha >= eps && Alpha <= Tetha)
             {
-                return 0.5 * Math.Pow(cosTetha, 2) * sin2Alpha;
+                return Math.Pow(cosTetha, 2) * sin2Alpha;
             }
             // Tetha < Alpha <= PI/2
             else
@@ -312,7 +312,7 @@ namespace AeroDynamicCalculator
                 double tangens = tanTetha / tanAlpha;
                 return 0.5 * (1 + 2 * beta / PI)
                         * (2 * Math.Pow(sinTetha, 2) + (1 - 3 * Math.Pow(sinTetha, 2))
-                        * Math.Pow(sinAlpha, 2)) + (0.75 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
+                        * Math.Pow(sinAlpha, 2)) + (1.5 / PI) * Math.Sqrt(1 - Math.Pow(tangens, 2))
                         * sin2Alpha * sin2Tetha;
             }
         }
@@ -445,7 +445,7 @@ namespace AeroDynamicCalculator
             // 0 <= Alpha <= Tetha
             if (Alpha >= eps && Alpha <= Tetha)
             {
-                return cos2ACosT2;
+                return 2 * cos2ACosT2;
             }
             // Tetha < Alpha <= PI/2
             else
@@ -505,12 +505,12 @@ namespace AeroDynamicCalculator
                 double sqrtTangens = Math.Sqrt(1 - Math.Pow(tanTetha / tanAlpha, 2));
 
                 double first = 2 * beta / PI + 1 ;
-                double second = (Math.Pow(cscAlpha, 2) * tanTetha * (Math.Pow(sinAlpha, 2) * (1 - 3 * Math.Pow(sinTetha, 2)) + 2 * Math.Pow(sinTetha, 2) )) / (PI * sqrtTangens);
-                double third = (3 * cos2Alpha * sin2Tetha * sqrtTangens) / (2 * PI);
-                double fourth = (3 * sin2Alpha * (1 / tanAlpha) * Math.Pow(cscAlpha, 2) * sin2Tetha * Math.Pow(tanTetha, 2)) / (4 * PI * sqrtTangens);
+                double second = 2 * (Math.Pow(cscAlpha, 2) * tanTetha * (Math.Pow(sinAlpha, 2) * (1 - 3 * Math.Pow(sinTetha, 2)) + 2 * Math.Pow(sinTetha, 2) )) / (PI * sqrtTangens);
+                double third = (3 * cos2Alpha * sin2Tetha * sqrtTangens) / PI;
+                double fourth = (3 * sin2Alpha * (1 / tanAlpha) * Math.Pow(cscAlpha, 2) * sin2Tetha * Math.Pow(tanTetha, 2)) / (2 * PI * sqrtTangens);
 
                 // вычитаем second
-                return sinAcosA3sinT2 * first - second + third + fourth; 
+                return 0.5 * (sinAcosA3sinT2 * first - second + third + fourth); 
             }
         }
 
