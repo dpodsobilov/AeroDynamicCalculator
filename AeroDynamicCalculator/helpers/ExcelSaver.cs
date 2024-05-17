@@ -22,7 +22,7 @@ namespace AeroDynamicCalculator.helpers
                 excelWS.Cells[1, 1] = "R";
                 excelWS.Cells[1, 2] = "rn";
                 excelWS.Cells[1, 3] = "tetha";
-                excelWS.Cells[1, 4] = "i";
+                excelWS.Cells[1, 4] = "alpha";
                 excelWS.Cells[1, 5] = "mzn";
                 excelWS.Cells[1, 6] = "Cyn";
                 excelWS.Cells[1, 7] = "Cx";

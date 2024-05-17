@@ -76,6 +76,7 @@ namespace AeroDynamicCalculator
             chart.Visible = true;
             chart.ChartAreas[0].AxisX.Minimum = 0;
             chart.ChartAreas[0].AxisX.Maximum = 90;
+
             chart.ChartAreas[0].AxisX.Interval = 2.5;
         }
 
@@ -90,7 +91,9 @@ namespace AeroDynamicCalculator
             {
                 data = capsule.CalculateValues(i, eps);
             }*/
-            for (double i = 0; i < 90; i += 0.5)
+            double tethaDegrees = capsule.Tetha / Math.PI * 180;
+            chart.ChartAreas[0].AxisX.Maximum = tethaDegrees;
+            for (double i = 0; i <= tethaDegrees; i += 0.5)
             {
                 data = capsule.CalculateValues(i, eps);
             }
