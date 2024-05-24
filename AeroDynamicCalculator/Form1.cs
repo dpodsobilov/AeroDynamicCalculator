@@ -66,8 +66,8 @@ namespace AeroDynamicCalculator
 
         private void InitilizeChart()
         {
-            chart.ChartAreas[0].AxisX.Title = "alpha";
-            chart.ChartAreas[0].AxisY.Title = "Mzn";
+            chart.ChartAreas[0].AxisX.Title = "Угол атаки alpha, °";
+            chart.ChartAreas[0].AxisY.Title = "Коэффициент\nаэродинамического момента\nотносительно\nноска капсулы Mzn";
         }
 
         // moves graphs to the beginning
@@ -108,7 +108,7 @@ namespace AeroDynamicCalculator
                 // mzn
                 case 0:
                     chart.Series[0].Points.Clear();
-                    chart.ChartAreas[0].AxisY.Title = "Mzn";
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент\nаэродинамического момента\nотносительно\nноска капсулы Mzn";
                     chart.Titles.Clear();
                     chart.Titles.Add("Зависимость Mzn от угла атаки alpha");
                     chart.Series[0].Points.DataBindXY(data.DictMzn.Keys, data.DictMzn.Values);
@@ -118,7 +118,7 @@ namespace AeroDynamicCalculator
                 // Cy
                 case 1:
                     chart.Series[0].Points.Clear();
-                    chart.ChartAreas[0].AxisY.Title = "Cyn";
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент аэродинамических\nсил по оси Y Cyn";
                     chart.Titles.Clear();
                     chart.Titles.Add("Зависимость Cyn от угла атаки alpha");
                     chart.Series[0].Points.DataBindXY(data.DictCyn.Keys, data.DictCyn.Values);
@@ -129,7 +129,7 @@ namespace AeroDynamicCalculator
                 // Cx
                 case 2:
                     chart.Series[0].Points.Clear();
-                    chart.ChartAreas[0].AxisY.Title = "Cx";
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент аэродинамических\nсил по оси X Cx";
                     chart.Titles.Clear();
                     chart.Titles.Add("Зависимость Cx от угла атаки alpha");
                     chart.Series[0].Points.DataBindXY(data.DictCx.Keys, data.DictCx.Values);
@@ -139,9 +139,9 @@ namespace AeroDynamicCalculator
                 // Mzc
                 case 3:
                     chart.Series[0].Points.Clear();
-                    chart.ChartAreas[0].AxisY.Title = "Mzc";
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент\nаэродинамического момента\nотносительно\nцентра масс капсулы Mzc";
                     chart.Titles.Clear();
-                    chart.Titles.Add("Зависимость Mzn от угла атаки alpha");
+                    chart.Titles.Add("Зависимость Mzc от угла атаки alpha");
                     chart.Series[0].Points.DataBindXY(data.DictMzc.Keys, data.DictMzc.Values);
                     tabControl.TabPages[tabControl.SelectedIndex].Controls.Add(chart);
                     break;
@@ -159,7 +159,7 @@ namespace AeroDynamicCalculator
                 // cxv
                 case 5:
                     chart.Series[0].Points.Clear();
-                    chart.ChartAreas[0].AxisY.Title = "Коэффициент лобового сопротивления cxv";
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент лобового\nсопротивления Cxv";
                     chart.Titles.Clear();
                     chart.Titles.Add("Зависимость cxv от угла атаки alpha");
                     chart.Series[0].Points.DataBindXY(data.DictCxv.Keys, data.DictCxv.Values);
@@ -169,7 +169,7 @@ namespace AeroDynamicCalculator
                 // cyv
                 case 6:
                     chart.Series[0].Points.Clear();
-                    chart.ChartAreas[0].AxisY.Title = "Коэффициент подъемной силы cyv";
+                    chart.ChartAreas[0].AxisY.Title = "Коэффициент подъемной\nсилы Cyv";
                     chart.Titles.Clear();
                     chart.Titles.Add("Зависимость cyv от угла атаки alpha");
                     chart.Series[0].Points.DataBindXY(data.DictCyv.Keys, data.DictCyv.Values);
@@ -179,7 +179,7 @@ namespace AeroDynamicCalculator
                 // производная cyv
                 case 7:
                     chart.Series[0].Points.Clear();
-                    chart.ChartAreas[0].AxisY.Title = "Производная коэффициента подъемной силы cyv";
+                    chart.ChartAreas[0].AxisY.Title = "Производная коэффициента\nподъемной силы Cyv";
                     chart.Titles.Clear();
                     chart.Titles.Add("Зависимость производной cyv от угла атаки alpha");
                     chart.Series[0].Points.DataBindXY(data.DictCyvDer.Keys, data.DictCyvDer.Values);
