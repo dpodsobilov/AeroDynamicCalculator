@@ -140,7 +140,7 @@ namespace AeroDynamicCalculator
         {
             data = new Data();
             this.r = r;
-            this.rn = rn;
+
 
             if (tetha < 0)
             {
@@ -154,6 +154,21 @@ namespace AeroDynamicCalculator
             else
             {
                 this.tetha = (tetha % 360) * PI / 180; 
+            }
+
+            double MAX_RN = CountMaxRn();
+            if (rn > MAX_RN)
+            {
+                DialogResult dialog = MessageBox.Show(
+                    $"Недопустимое значение радиуса сферического сегмента! Для заданных параметров капсулы rn должно лежать в диапазоне (0; {Math.Round(MAX_RN, 5)}]. Rn будет равно {Math.Round(MAX_RN, 5)}",
+                    "Предупреждение",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                this.rn = MAX_RN;
+            }
+            else
+            {
+                this.rn = rn;
             }
 
             // рассчет констант с Tetha
@@ -209,6 +224,12 @@ namespace AeroDynamicCalculator
             data.DictCyvDer.Add(iteration, cyvDerivative);
 
             return data;
+        }
+
+        internal double CountMaxRn()
+        {
+            const double MAX_LENGTH = 1;
+            return MAX_LENGTH - R / Math.Tan(Tetha) / (1 - (1 / Math.Sin(Tetha)));
         }
 
         internal void CountConstantsOnIteraion() {
